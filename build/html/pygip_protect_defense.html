@@ -7,7 +7,7 @@
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
         <title>pygip.protect.defense - PyGIP 0.1.0 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
     
@@ -256,211 +256,6 @@
         <article role="main" id="furo-main-content">
           <section id="pygip-protect-defense">
 <h1>pygip.protect.defense<a class="headerlink" href="#pygip-protect-defense" title="Link to this heading">¶</a></h1>
-<dl class="py class">
-<dt class="sig sig-object py">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pygip.protect.Defense.</span></span><span class="sig-name descname"><span class="pre">Defense</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attack_node_fraction</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygip/protect/Defense.html#Defense"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>A base class for defense (or watermark) operations.
-In this example, it is mainly used to merge watermark graphs with
-existing datasets or perform subsequent model extraction attacks.</p>
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">generate_extended_label_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datasetCora_merge</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">original_node_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_node_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygip/protect/Defense.html#Defense.generate_extended_label_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
-<dd><p>Generates or extends a label file for subsequent attacks.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>datasetCora_merge</strong> (<em>graph_to_dataset</em>) – The merged dataset object after watermark insertion.</p></li>
-<li><p><strong>original_node_count</strong> (<em>int</em>) – The number of nodes in the original dataset.</p></li>
-<li><p><strong>new_node_count</strong> (<em>int</em>) – The number of new watermark nodes.</p></li>
-<li><p><strong>output_file</strong> (<em>str</em>) – The path to the label file to be written.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">merge_cora_and_datawm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cora_graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">datawm</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygip/protect/Defense.html#Defense.merge_cora_and_datawm"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
-<dd><p>Merges the original graph (cora_graph) and the watermark graph (datawm).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>cora_graph</strong> (<em>dgl.DGLGraph</em>) – The original graph (e.g., Cora dataset).</p></li>
-<li><p><strong>datawm</strong> (<em>dgl.DGLGraph</em>) – The watermark graph.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The merged graph, containing newly added nodes and edges.
-Also includes an updated watermark mask ‘wm_mask’.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>dgl.DGLGraph</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loader</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygip/protect/Defense.html#Defense.test"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
-<dd><p>A sample test/validation function.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>loader</strong> (<em>DataLoader</em>) – A DataLoader for test/validation, containing blocks.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The accuracy on the test/validation set.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loader</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygip/protect/Defense.html#Defense.train"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
-<dd><p>A sample training function that iterates over the given DataLoader (blocks) to perform gradient updates.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>loader</strong> (<em>DataLoader</em>) – A DGL batch training DataLoader that yields blocks.</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The average loss of the current training iteration.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>float</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">watermark_attack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attack_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dataset_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygip/protect/Defense.html#Defense.watermark_attack"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
-<dd><p>Injects watermark into the dataset and executes a specified attack method.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>dataset</strong> (<em>graph_to_dataset</em>) – The original dataset wrapper.</p></li>
-<li><p><strong>attack_name</strong> (<em>int</em>) – The ID of the attack method (corresponds to ModelExtractionAttackX classes).</p></li>
-<li><p><strong>dataset_name</strong> (<em>int</em>) – The dataset ID (e.g., 1 for cora, 2 for citeseer, 3 for pubmed).</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pygip.protect.Defense.</span></span><span class="sig-name descname"><span class="pre">GraphSAGE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_channels</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygip/protect/Defense.html#GraphSAGE"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
-<p>A GraphSAGE model implemented with PyG’s SAGEConv module.</p>
-<p>It consists of two SAGEConv layers:
-- The first layer projects features to ‘hidden_channels’,
-- The second layer outputs ‘out_channels’.</p>
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blocks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygip/protect/Defense.html#GraphSAGE.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
-<dd><p>Forward pass.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>blocks</strong> (<em>list</em><em> of </em><em>dgl.DGLGraph</em>) – A list of subgraphs sampled for multiple layers.</p></li>
-<li><p><strong>x</strong> (<em>torch.Tensor</em>) – The node features of shape (num_nodes, in_channels).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>The model outputs (logits) of shape (num_nodes, out_channels).</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.Tensor</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pygip.protect.Defense.</span></span><span class="sig-name descname"><span class="pre">WatermarkGraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">device(type='cpu')</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygip/protect/Defense.html#WatermarkGraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>A class for generating a watermark graph.</p>
-<p>This class first uses the ‘erdos_renyi_graph’ function to randomly generate edges,
-then randomly generates node features and labels, and finally creates a DGLGraph
-with the generated information.</p>
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">_generate_wm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygip/protect/Defense.html#WatermarkGraph._generate_wm"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
-<dd><p>Internal function to generate the watermark graph.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>n</strong> (<em>int</em>) – The number of nodes.</p></li>
-<li><p><strong>num_features</strong> (<em>int</em>) – The dimension of node features.</p></li>
-<li><p><strong>num_classes</strong> (<em>int</em>) – The total number of classes.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A watermark graph with random features and labels.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>dgl.DGLGraph</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pygip.protect.Defense.</span></span><span class="sig-name descname"><span class="pre">Watermark_sage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attack_node_fraction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wm_node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">device(type='cpu')</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygip/protect/Defense.html#Watermark_sage"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Defense</span></code></p>
-<p>Inherits from Defense. Uses GraphSAGE to train on both the original and
-watermark graphs, ultimately embedding a watermark into the trained model (or graph).</p>
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">attack</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygip/protect/Defense.html#Watermark_sage.attack"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
-<dd><p>Main attack (or watermark injection) process:
-1. Generate the watermark graph (data_wm).
-2. Pre-train on the original graph via GraphSAGE.
-3. Optionally fine-tune on the watermark graph.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">erdos_renyi_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">directed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygip/protect/Defense.html#Watermark_sage.erdos_renyi_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
-<dd><p>A custom Erdos-Renyi random graph generator.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>n</strong> (<em>int</em>) – Number of nodes.</p></li>
-<li><p><strong>p</strong> (<em>float</em>) – Probability of connecting two nodes.</p></li>
-<li><p><strong>directed</strong> (<em>bool</em><em>, </em><em>optional</em>) – Whether the graph is directed (default is False).</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>An edge index tensor of shape (2, num_edges).</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>torch.Tensor</p>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pygip.protect.Defense.</span></span><span class="sig-name descname"><span class="pre">graph_to_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">attack_node_fraction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pygip/protect/Defense.html#graph_to_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>A utility class to wrap a DGLGraph into a dataset-like structure.</p>
-<p>Main responsibilities:
-1. Extract basic graph information such as the number of nodes, features, labels, and attack nodes.
-2. Retrieve and process node features, labels, as well as train/test masks.
-3. Ensure that all tensors are on the specified device (device).</p>
-</dd></dl>
-
 </section>
 
         </article>
@@ -492,7 +287,7 @@ watermark graphs, ultimately embedding a watermark into the trained model (or gr
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2024, Yuxiang Sun, Chenxi Zhao
+                Copyright &#169; 2024, Yuxiang Sun1, Chenxi Zhao
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             

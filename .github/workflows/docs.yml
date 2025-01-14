@@ -1,0 +1,42 @@
+name: Build and Deploy Sphinx Docs  # Workflow name
+
+on:
+  push:
+    branches:
+      - main  # Trigger workflow on pushes to the 'main' branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use Ubuntu as the runner
+
+    steps:
+      # Step 1: Check out the repository
+      - name: Check out repository
+        uses: actions/checkout@v3  # Clone the GitHub repo
+
+      # Step 2: Install Miniconda
+      - name: Set up Miniconda
+        uses: goanpeca/setup-miniconda@v2
+        with:
+          auto-update-conda: true  # Ensure conda is updated
+          python-version: 3.8  # Specify the Python version for the environment
+
+      # Step 3: Create Conda environment and install dependencies
+      - name: Create Conda environment and install dependencies
+        run: |
+          conda create -n sphinx-env python=3.8 -y
+          source activate sphinx-env
+          conda install -c conda-forge sphinx sphinx-rtd-theme -y
+
+      # Step 4: Build the Sphinx documentation
+      - name: Build Sphinx documentation
+        run: |
+          source activate sphinx-env
+          sphinx-build -b html source build
+
+      # Step 5: Deploy the documentation to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build

@@ -1,3 +1,4 @@
+
 # Configuration file for the Sphinx documentation builder.
 #
 # For the full list of built-in configuration values, see the documentation:
@@ -7,7 +8,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'PyGIP'
-copyright = '2024, Yuxiang Sun, Chenxi Zhao'
+copyright = '2024, Yuxiang Sun1, Chenxi Zhao'
 author = 'Yuxiang Sun, Chenxi Zhao'
 release = '0.1.0'
 
