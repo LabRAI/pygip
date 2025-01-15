@@ -3,35 +3,56 @@ name: Build and Deploy Sphinx Docs
 on:
   push:
     branches:
-      - new
+      - new  # Trigger workflow on pushes to the 'new' branch
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Check out the repository
       - name: Check out repository
         uses: actions/checkout@v3
 
+      # Step 2: Set up Miniconda
       - name: Set up Miniconda
         uses: goanpeca/setup-miniconda@v2
         with:
-          auto-update-conda: true
+          auto-update-conda: true  # Ensure conda is updated
           python-version: 3.10  # Use a valid Python version
 
+      # Step 3: Debug Python version and Conda installation
+      - name: Debug Python and Conda
+        run: |
+          python --version
+          conda info
+          conda config --show
+
+      # Step 4: Clear Conda cache (optional, to ensure a clean environment)
+      - name: Clear Conda Cache
+        run: |
+          conda clean --all -y
+
+      # Step 5: Create Conda environment and install dependencies
       - name: Create Conda environment and install dependencies
         run: |
-          source ~/miniconda/etc/profile.d/conda.sh
-          conda create -n sphinx-env python=3.10 -y  # Correct Python version
-          conda activate sphinx-env
-          conda install -c conda-forge sphinx sphinx-rtd-theme -y
+          source ~/miniconda/etc/profile.d/conda.sh  # Ensure Conda is initialized
+          conda create -n sphinx-env python=3.10 -y  # Create environment with Python 3.10
+          conda activate sphinx-env  # Activate the Conda environment
+          conda install -c conda-forge sphinx sphinx-rtd-theme -y  # Install Sphinx and theme
 
+      # Step 6: Build Sphinx documentation
       - name: Build Sphinx documentation
         run: |
-          source ~/miniconda/etc/profile.d/conda.sh
-          conda activate sphinx-env
-          sphinx-build -b html source build/html
+          source ~/miniconda/etc/profile.d/conda.sh  # Ensure Conda is initialized
+          conda activate sphinx-env  # Activate the Conda environment
+          sphinx-build -b html source build/html  # Build HTML documentation
 
+      # Step 7: Verify Sphinx output (optional debugging step)
+      - name: Verify Sphinx Build Output
+        run: ls -l build/html
+
+      # Step 8: Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
