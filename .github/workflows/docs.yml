@@ -19,12 +19,12 @@ jobs:
         uses: goanpeca/setup-miniconda@v2
         with:
           auto-update-conda: true  # Ensure conda is updated
-          python-version: 3.8  # Specify the Python version for the environment
+          python-version: 3.10  # Specify the Python version for the environment
 
       # Step 3: Create Conda environment and install dependencies
       - name: Create Conda environment and install dependencies
         run: |
-          conda create -n sphinx-env python=3.8 -y
+          conda create -n sphinx-env python=3.10 -y
           source activate sphinx-env
           conda install -c conda-forge sphinx sphinx-rtd-theme -y
 
