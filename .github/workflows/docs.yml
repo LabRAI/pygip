@@ -3,7 +3,7 @@ name: Build and Deploy Sphinx Docs  # Workflow name
 on:
   push:
     branches:
-      - new  # Trigger workflow on pushes to the 'main' branch
+      - new  # Trigger workflow on pushes to the 'new' branch
 
 jobs:
   build:
@@ -25,18 +25,20 @@ jobs:
       - name: Create Conda environment and install dependencies
         run: |
           conda create -n sphinx-env python=3.10 -y
-          source activate sphinx-env
+          source ~/miniconda/etc/profile.d/conda.sh  # Ensure conda is loaded
+          conda activate sphinx-env
           conda install -c conda-forge sphinx sphinx-rtd-theme -y
 
       # Step 4: Build the Sphinx documentation
       - name: Build Sphinx documentation
         run: |
-          source activate sphinx-env
-          sphinx-build -b html source build
+          source ~/miniconda/etc/profile.d/conda.sh  # Ensure conda is loaded
+          conda activate sphinx-env
+          sphinx-build -b html source build/html
 
       # Step 5: Deploy the documentation to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: ./build/html
