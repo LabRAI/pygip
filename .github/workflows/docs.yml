@@ -18,9 +18,15 @@ jobs:
       - name: Set up Miniconda
         uses: goanpeca/setup-miniconda@v2
         with:
-          auto-update-conda: true  # Ensure conda is updated
-          python-version: 3.10  # Specify the Python version for the environment
+          auto-update-conda: false  # Disable automatic update to control it manually
+          python-version: 3.10
 
+      # Step 2.1: Update Conda manually
+      - name: Update Conda
+        run: |
+          source ~/miniconda/etc/profile.d/conda.sh
+          conda update -n base -c defaults conda -y
+      
       # Step 3: Create Conda environment and install dependencies
       - name: Create Conda environment and install dependencies
         run: |
