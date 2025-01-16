@@ -1,0 +1,6 @@
+/* Hide theme toggles permanently */
+.theme-toggle-container,
+.theme-toggle {
+    display: none !important;
+    visibility: hidden !important;
+}
