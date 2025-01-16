@@ -36,10 +36,19 @@ napoleon_numpy_docstring = True
 # HTML theme settings
 html_theme = 'furo'
 html_static_path = ['_static']
+html_css_files = ['custom.css']
 html_theme_options = {
-    "navigation_with_keys": True,
     "sidebar_hide_name": False,
+    "navigation_with_keys": True,
+    "footer_icons": [],
+    "light_css_variables": {
+        "color-foreground-primary": "black",
+        "color-background-primary": "white",
+        "color-background-secondary": "#f8f9fb",
+    }
 }
+# Disable view source link
+html_show_sourcelink = False
 
 # Important for GitHub Pages
 html_baseurl = '/pygip.github.io/'
