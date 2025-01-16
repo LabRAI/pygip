@@ -1,0 +1,10 @@
+name: pygip-docs
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.x
+  - sphinx
+  - sphinx-autodoc-typehints
+  - furo
+  # Add any other dependencies your package needs
