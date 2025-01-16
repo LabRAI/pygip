@@ -3,11 +3,13 @@ name: Sphinx Documentation
 on:
   push:
     branches:
-      - new  # Only build when pushing to 'new' branch
+      - new
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # This line gives write permission to the workflow
     steps:
     - uses: actions/checkout@v2
     
@@ -25,8 +27,8 @@ jobs:
         conda install sphinx furo sphinx-autodoc-typehints -c conda-forge
     
     - name: Build documentation
+      shell: bash -l {0}
       run: |
-        cd docs
         make html
     
     - name: Deploy to GitHub Pages
