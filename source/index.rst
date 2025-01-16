@@ -1,7 +1,7 @@
 .. raw:: html
 
    <div style="margin-top: 50px; text-align: center;">
-     <img src="_static/icon.pdf" alt="PyGIP Icon">
+     <img src="_static/icon.png" alt="PyGIP Icon">
    </div>
 
 ----
