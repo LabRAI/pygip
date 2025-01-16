@@ -37,14 +37,25 @@ napoleon_numpy_docstring = True
 html_theme = 'furo'
 html_static_path = ['_static']
 html_css_files = ['custom.css']
+html_js_files = ['force_light.js']
+
 html_theme_options = {
     "sidebar_hide_name": False,
     "navigation_with_keys": True,
     "footer_icons": [],
+    # Explicitly remove dark mode
+    "dark_css_variables": None,
+    "dark_mode_theme": None,
+    # Force light CSS variables
     "light_css_variables": {
         "color-foreground-primary": "black",
         "color-background-primary": "white",
         "color-background-secondary": "#f8f9fb",
+        "color-sidebar-background": "white",
+        "color-brand-primary": "#2980B9",
+        "color-brand-content": "#2980B9",
+        "color-api-name": "#2980B9",
+        "color-api-pre-name": "#2980B9",
     }
 }
 # Disable view source link

@@ -1,6 +1,19 @@
-/* Hide theme toggles permanently */
-.theme-toggle-container,
-.theme-toggle {
+/* Force light mode and override system preferences */
+:root,
+:root[data-theme="dark"],
+:root[data-theme="auto"] {
+    color-scheme: light !important;
+    --color-foreground-primary: black !important;
+    --color-background-primary: white !important;
+    --color-background-secondary: #f8f9fb !important;
+    --color-sidebar-background: white !important;
+    --color-code-background: #f8f9fb !important;
+    --color-code-foreground: black !important;
+    --color-link: #2980B9 !important;
+}
+
+/* Hide theme toggles */
+.theme-toggle,
+.theme-toggle-container {
     display: none !important;
-    visibility: hidden !important;
 }
