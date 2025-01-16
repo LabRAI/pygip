@@ -51,4 +51,4 @@ html_theme_options = {
 html_show_sourcelink = False
 
 # Important for GitHub Pages
-html_baseurl = '/pygip.github.io/'
+html_baseurl = 'https://labrai.github.io/pygip/'
