@@ -77,13 +77,13 @@ For further information, refer to individual classes like `GraphNeuralNetworkMet
    quick_start
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: API Reference
    :hidden:
 
-   pygip_reference
-   pygip_protect_defense
-   pygip_datasets
+   pygip/protect/gnn_mea/pygip_reference
+   pygip/protect/defense/pygip_protect_defense
+   pygip/datasets/pygip_datasets
 
 .. toctree::
    :maxdepth: 2
