@@ -90,15 +90,16 @@ For further information, refer to individual classes like `GraphNeuralNetworkMet
    :caption: Additional Information
    :hidden:
 
+   Contribute
    Cite
    Core Team
    Reference
 
 
-Indices and tables
-==================
+.. Indices and tables
+.. ==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. * :ref:`genindex`
+.. * :ref:`modindex`
+.. * :ref:`search`
 
