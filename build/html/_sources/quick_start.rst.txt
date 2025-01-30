@@ -1,5 +1,5 @@
 Quick Start Guide
-===============
+===================
 This guide will help you get started with PyGIP quickly.
 
 Initial Setup
