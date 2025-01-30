@@ -1,5 +1,5 @@
 Core Team
-========
+==============
 
 Our team is composed of dedicated researchers and developers who contribute to PyGIP's development and maintenance.
 
