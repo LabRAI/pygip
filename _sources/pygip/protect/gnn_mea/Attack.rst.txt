@@ -1,4 +1,4 @@
-Model_Extraction_Attacks_against_Graph_Neural_Network
+Attack
 =====================================================
 
 .. toctree::
@@ -7,7 +7,8 @@ Model_Extraction_Attacks_against_Graph_Neural_Network
    :hidden:
    :titlesonly:
 
-   ModelExtractionAttack
+   AdversarialModelExtraction
+   Model_Stealing_Attacks_Against_Inductive_Graph_Neural_Networks
    ModelExtractionAttack0
    ModelExtractionAttack1
    ModelExtractionAttack2
@@ -20,10 +21,30 @@ Model_Extraction_Attacks_against_Graph_Neural_Network
    :header-rows: 1
 
    * - Class
+     - Source
+   * - ModelExtractionAttack0
+     - 
+   * - ModelExtractionAttack1
+     - 
+   * - ModelExtractionAttack2
+     - 
+   * - ModelExtractionAttack3
+     - 
+   * - ModelExtractionAttack4
+     - 
+   * - ModelExtractionAttack5
+     - 
+   * - GNNStealing                    
+     - 
+   * - AdversarialModelExtraction    
+     - 
+
+.. list-table::
+   :widths: 25 75
+   :header-rows: 1
+
+   * - Class
      - Usage
-   * - ModelExtractionAttack
-     - Base class for all extraction attacks. Initialize with target dataset and 
-       attack node fraction. Provides core attack utilities.
    * - ModelExtractionAttack0
      - Basic extraction attack using neighbor features. Synthesizes node features 
        based on first and second-order neighbors with configurable weighting.
@@ -42,21 +63,13 @@ Model_Extraction_Attacks_against_Graph_Neural_Network
    * - ModelExtractionAttack5
      - Advanced shadow attack with threshold-based linking. Similar to Attack4 but 
        uses distance thresholds for edge creation.
-
-.. code-block:: python
-   :caption: Example Python Code
-   :linenos: 
-   
-   # Importing necessary classes and functions from the pygip library.
-   from pygip.datasets.datasets import *  # Import all available datasets.
-   from pygip.protect import *  # Import all core algorithms.
-
-   # Loading the Cora dataset, which is commonly used in graph neural network research.
-   dataset = Cora()
-
-   # Initializing a model extraction attack with the Cora dataset.
-   # The second parameter (0.25) might represent the fraction of the data.
-   modelExtractionAttack = ModelExtractionAttack0(dataset, 0.25)
-
-   # Executing the attack on the model.
-   modelExtractionAttack.attack()
+   * - GNNStealing                    
+     - Advanced model extraction attack that employs surrogate models (GAT/GIN/GraphSAGE) 
+       to clone target GNN behavior. Supports multiple feature recovery methods including 
+       predictions, embeddings and projections. Uses graph structure preservation and 
+       validation through fidelity metrics.
+   * - AdversarialModelExtraction    
+     - Subgraph-based model extraction that samples k-hop neighborhoods and synthesizes 
+       features using class-conditional prior distributions. Constructs attack graphs by 
+       combining sampled subgraphs and trains a GCN-based surrogate model to replicate 
+       target model behavior.

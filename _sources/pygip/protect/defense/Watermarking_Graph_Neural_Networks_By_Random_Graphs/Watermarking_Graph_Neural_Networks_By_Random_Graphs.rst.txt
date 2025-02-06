@@ -7,7 +7,7 @@ Watermarking_Graph_Neural_Networks_By_Random_Graphs
    :hidden:
    :titlesonly:
 
-   Defense
+   WatermarkDefense
 
 .. code-block:: python
   :caption: Example Python Code

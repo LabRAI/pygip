@@ -3,11 +3,11 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="ModelExtractionAttack1" href="ModelExtractionAttack1.html" /><link rel="prev" title="GNNStealing" href="Model_Stealing_Attacks_Against_Inductive_Graph_Neural_Networks.html" />
-        <link rel="canonical" href="https://labrai.github.io/pygip/pygip/protect/gnn_mea/ModelExtractionAttack0.html" />
+<link rel="index" title="Index" href="../../../genindex.html" /><link rel="search" title="Search" href="../../../search.html" /><link rel="next" title="ModelExtractionAttack0" href="ModelExtractionAttack0.html" /><link rel="prev" title="AdversarialModelExtraction" href="AdversarialModelExtraction.html" />
+        <link rel="canonical" href="https://labrai.github.io/pygip/pygip/protect/gnn_mea/Model_Stealing_Attacks_Against_Inductive_Graph_Neural_Networks.html" />
 
     <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
-        <title>ModelExtractionAttack0 - PyGIP 0.1.0 documentation</title>
+        <title>GNNStealing - PyGIP 0.1.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="../../../_static/styles/furo-extensions.css?v=302659d7" />
@@ -188,7 +188,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -217,8 +217,8 @@
 <ul class="current">
 <li class="toctree-l1 current has-children"><a class="reference internal" href="Attack.html">Attack</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Attack</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="AdversarialModelExtraction.html">AdversarialModelExtraction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Model_Stealing_Attacks_Against_Inductive_Graph_Neural_Networks.html">GNNStealing</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">ModelExtractionAttack0</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">GNNStealing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ModelExtractionAttack0.html">ModelExtractionAttack0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ModelExtractionAttack1.html">ModelExtractionAttack1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ModelExtractionAttack2.html">ModelExtractionAttack2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ModelExtractionAttack3.html">ModelExtractionAttack3</a></li>
@@ -306,40 +306,162 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="modelextractionattack0">
-<h1>ModelExtractionAttack0<a class="headerlink" href="#modelextractionattack0" title="Link to this heading">¶</a></h1>
-<p>Basic extraction attack that queries a subset of nodes and synthesizes features based on multi-hop neighbors.</p>
-<p><strong>Parameters</strong></p>
+          <section id="gnnstealing">
+<h1>GNNStealing<a class="headerlink" href="#gnnstealing" title="Link to this heading">¶</a></h1>
+<p>A sophisticated model extraction attack framework for Graph Neural Networks that creates surrogate models by querying target models and reconstructing their behavior.</p>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading">¶</a></h2>
+<p>GNNStealing implements an advanced model extraction attack against Graph Neural Networks. It supports multiple target and surrogate model architectures (GAT, GIN, GraphSAGE) and different feature recovery methods.</p>
+</section>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h2>
 <dl class="simple">
-<dt>dataset<span class="classifier">object</span></dt><dd><p>Dataset containing graph structures.</p>
+<dt>dataset<span class="classifier">object</span></dt><dd><p>Dataset object containing the graph structure and features.</p>
 </dd>
-<dt>attack_node_fraction<span class="classifier">float</span></dt><dd><p>Fraction of nodes to use in attack.</p>
+<dt>attack_node_fraction<span class="classifier">float</span></dt><dd><p>Fraction of nodes to use in the attack process.</p>
 </dd>
-<dt>model_path<span class="classifier">str, optional</span></dt><dd><p>Path to load pre-trained model.</p>
+<dt>target_model_type<span class="classifier">str</span></dt><dd><p>Type of target model to attack. Options: [‘gat’, ‘gin’, ‘sage’]</p>
 </dd>
-<dt>alpha<span class="classifier">float, optional</span></dt><dd><p>Weight between first-order and second-order neighbors (default: 0.8).</p>
+<dt>surrogate_model_type<span class="classifier">str</span></dt><dd><p>Type of surrogate model to train. Options: [‘gat’, ‘gin’, ‘sage’]</p>
+</dd>
+<dt>recovery_method<span class="classifier">str</span></dt><dd><p>Method to recover features. Options: [‘prediction’, ‘embedding’, ‘projection’]</p>
+</dd>
+<dt>structure<span class="classifier">str, optional</span></dt><dd><p>Graph structure to use. Options: [‘original’, ‘idgl’]. Default: ‘original’</p>
+</dd>
+<dt>delete_edges<span class="classifier">str, optional</span></dt><dd><p>Whether to delete edges from training graph. Options: [‘yes’, ‘no’]. Default: ‘no’</p>
+</dd>
+<dt>transform<span class="classifier">str, optional</span></dt><dd><p>Transform method for embeddings. Default: ‘TSNE’</p>
+</dd>
+<dt>device<span class="classifier">str, optional</span></dt><dd><p>Device to run computations on. Default: ‘cuda’ if available, else ‘cpu’</p>
 </dd>
 </dl>
-<p><strong>Methods</strong></p>
+</section>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading">¶</a></h2>
 <dl>
-<dt>get_nonzero_indices(matrix_row: np.ndarray) -&gt; np.ndarray</dt><dd><p>Gets indices of nonzero entries in adjacency matrix row.</p>
+<dt>train_target_model_stl(self):</dt><dd><p>“””
+Trains the target model to be attacked.</p>
 <dl class="simple">
-<dt>Returns:</dt><dd><p>np.ndarray: Indices of nonzero entries.</p>
+<dt>Returns:</dt><dd><p>torch.nn.Module: Trained target model</p>
 </dd>
 </dl>
+<p>“””</p>
 </dd>
-<dt>attack()</dt><dd><p>Executes attack procedure:
-1. Samples subset of nodes for querying
-2. Synthesizes neighbor features
-3. Builds sub-graph and trains extraction model</p>
+<dt>preprocess_dataset(self):</dt><dd><p>“””
+Preprocesses the dataset by:
+- Creating train/val/test masks if not present
+- Loading node features and labels
+- Validating data presence
+“””</p>
+</dd>
+<dt>generate_query_graph(self):</dt><dd><p>“””
+Generates the query graph for the attack.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>dgl.DGLGraph: Query graph with self-loops added</p>
 </dd>
 </dl>
+<p>“””</p>
+</dd>
+<dt>query_target_model(self, G_QUERY):</dt><dd><p>“””
+Queries the target model with the generated query graph.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>G_QUERY (dgl.DGLGraph): Query graph</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple: (accuracy, predictions, embeddings)</p>
+</dd>
+</dl>
+<p>“””</p>
+</dd>
+<dt>train_surrogate_model(self, data):</dt><dd><p>“””
+Trains the surrogate model using queried data.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>data (tuple): Training data including features, labels and graph structure</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple: (model, classifier, detached_classifier)</p>
+</dd>
+</dl>
+<p>“””</p>
+</dd>
+<dt>evaluate_surrogate_model(self, model_s, classifier, test_g):</dt><dd><p>“””
+Evaluates the trained surrogate model.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>model_s: Surrogate model
+classifier: Model classifier
+test_g (dgl.DGLGraph): Test graph</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple: (accuracy, predictions, embeddings)</p>
+</dd>
+</dl>
+<p>“””</p>
+</dd>
+<dt>attack(self):</dt><dd><p>“””
+Executes the complete attack procedure:
+1. Generates query graph
+2. Queries target model
+3. Trains surrogate model
+4. Evaluates attack success</p>
+<p>Prints attack results including:
+- Surrogate model accuracy
+- Target model accuracy
+- Attack accuracy
+- Model fidelity
+“””</p>
+</dd>
+</dl>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>The attack supports three different model architectures: GAT, GIN, and GraphSAGE</p></li>
+<li><p>Features can be recovered using predictions, embeddings, or projections</p></li>
+<li><p>Graph structure can be original or reconstructed using IDGL</p></li>
+<li><p>Evaluation metrics include model accuracy and fidelity</p></li>
+<li><p>The implementation uses DGL (Deep Graph Library) for graph operations</p></li>
+</ul>
+</section>
+<section id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>torch</p></li>
+<li><p>dgl</p></li>
+<li><p>numpy</p></li>
+<li><p>sklearn</p></li>
+<li><p>scipy</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Example Python Code</span><a class="headerlink" href="#id1" title="Link to this code">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># Importing necessary classes and functions from the pygip library.</span>
+<span class="linenos"> 2</span><span class="kn">from</span><span class="w"> </span><span class="nn">pygip.datasets.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>  <span class="c1"># Import all available datasets.</span>
+<span class="linenos"> 3</span><span class="kn">from</span><span class="w"> </span><span class="nn">pygip.protect</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>  <span class="c1"># Import all core algorithms.</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="c1"># Loading the Cora dataset, which is commonly used in graph neural network research.</span>
+<span class="linenos"> 6</span><span class="n">dataset</span> <span class="o">=</span> <span class="n">Cora</span><span class="p">()</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="c1"># Initializing the GNNStealing attack with the Cora dataset.</span>
+<span class="linenos"> 9</span><span class="n">gnnstealing_attack</span> <span class="o">=</span> <span class="n">GNNStealing</span><span class="p">(</span>
+<span class="linenos">10</span>    <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span>
+<span class="linenos">11</span>    <span class="n">attack_node_fraction</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span>    <span class="c1"># Fraction of nodes to use in the attack</span>
+<span class="linenos">12</span>    <span class="n">target_model_type</span><span class="o">=</span><span class="s1">&#39;gin&#39;</span><span class="p">,</span>      <span class="c1"># Target model type (e.g., &#39;gin&#39;, &#39;gat&#39;, &#39;sage&#39;)</span>
+<span class="linenos">13</span>    <span class="n">surrogate_model_type</span><span class="o">=</span><span class="s1">&#39;gin&#39;</span><span class="p">,</span>   <span class="c1"># Surrogate model type (e.g., &#39;gin&#39;, &#39;gat&#39;, &#39;sage&#39;)</span>
+<span class="linenos">14</span>    <span class="n">recovery_method</span><span class="o">=</span><span class="s1">&#39;embedding&#39;</span><span class="p">,</span>  <span class="c1"># Recovery method (&#39;embedding&#39;, &#39;projection&#39;, &#39;prediction&#39;)</span>
+<span class="linenos">15</span>    <span class="n">structure</span><span class="o">=</span><span class="s1">&#39;original&#39;</span><span class="p">,</span>         <span class="c1"># Graph structure (&#39;original&#39; or other transformations)</span>
+<span class="linenos">16</span>    <span class="n">delete_edges</span><span class="o">=</span><span class="s1">&#39;no&#39;</span><span class="p">,</span>           <span class="c1"># Whether to delete edges (&#39;yes&#39; or &#39;no&#39;)</span>
+<span class="linenos">17</span>    <span class="n">transform</span><span class="o">=</span><span class="s1">&#39;TSNE&#39;</span><span class="p">,</span>            <span class="c1"># Dimensionality reduction method (&#39;TSNE&#39; or others)</span>
+<span class="linenos">18</span>    <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cpu&#39;</span>                 <span class="c1"># Device to run the attack on (&#39;cpu&#39; or &#39;cuda&#39;)</span>
+<span class="linenos">19</span><span class="p">)</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span><span class="c1"># Executing the GNNStealing attack on the model.</span>
+<span class="linenos">22</span><span class="n">gnnstealing_attack</span><span class="o">.</span><span class="n">attack</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
 </section>
 
         </article>
@@ -347,23 +469,23 @@
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="ModelExtractionAttack1.html">
+          <a class="next-page" href="ModelExtractionAttack0.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">ModelExtractionAttack1</div>
+                <div class="title">ModelExtractionAttack0</div>
               </div>
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="Model_Stealing_Attacks_Against_Inductive_Graph_Neural_Networks.html">
+          <a class="prev-page" href="AdversarialModelExtraction.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">GNNStealing</div>
+                <div class="title">AdversarialModelExtraction</div>
                 
               </div>
             </a>
@@ -385,8 +507,31 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">GNNStealing</a><ul>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#parameters">Parameters</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#notes">Notes</a></li>
+<li><a class="reference internal" href="#requirements">Requirements</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
