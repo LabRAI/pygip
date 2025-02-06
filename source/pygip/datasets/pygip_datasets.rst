@@ -1,4 +1,4 @@
-pygip.datasets
+Datasets
 ==============
 
 .. toctree::

@@ -1,4 +1,4 @@
-pygip.protect.defense
+Defense
 =====================
 
 .. toctree::
@@ -7,7 +7,7 @@ pygip.protect.defense
    :hidden:
    :titlesonly:
 
-   Watermarking_Graph_Neural_Networks_By_Random_Graphs/Watermarking_Graph_Neural_Networks_By_Random_Graphs
+   WatermarkDefense
 
 .. list-table::
    :widths: 25 75

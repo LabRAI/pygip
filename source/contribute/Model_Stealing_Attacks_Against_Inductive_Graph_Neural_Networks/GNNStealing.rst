@@ -1,8 +1,8 @@
-Model_Stealing_Attacks_Against_Inductive_Graph_Neural_Networks
+GNNStealing
 ===============================================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: ADDITIONAL INFORMATION
    :hidden:
    :titlesonly:

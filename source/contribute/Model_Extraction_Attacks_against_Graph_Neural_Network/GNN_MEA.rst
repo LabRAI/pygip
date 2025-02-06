@@ -1,8 +1,8 @@
-Model_Extraction_Attacks_against_Graph_Neural_Network
+GNN_MEA
 =====================================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: ADDITIONAL INFORMATION
    :hidden:
    :titlesonly:

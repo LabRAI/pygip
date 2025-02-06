@@ -1,8 +1,8 @@
-Watermarking_Graph_Neural_Networks_By_Random_Graphs
+WatermarkDefense
 =====================================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: ADDITIONAL INFORMATION
    :hidden:
    :titlesonly:

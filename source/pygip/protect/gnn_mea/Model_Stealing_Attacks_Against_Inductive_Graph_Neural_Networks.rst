@@ -154,3 +154,33 @@ Requirements
 
    # Executing the GNNStealing attack on the model.
    gnnstealing_attack.attack()
+
+1. **GNNStealing Attack on Cora**
+   
+   - **NumNodes**: 2708  
+   - **NumEdges**: 10556  
+   - **NumFeats**: 1433  
+   - **NumClasses**: 7  
+
+   .. code-block:: console
+
+      100%|██████████████████████| 200/200 [00:14<00:00, 14.03it/s]
+      100%|██████████████████████| 100/100 [00:01<00:00, 51.57it/s]
+
+   - **Fidelity**: 0.4989  
+   - **Accuracy**: 0.8337  
+
+2. **GNNStealing Attack on PROTEINS**
+   
+   - **NumNodes**: 939  
+   - **NumEdges**: 651  
+   - **NumFeats**: 3  
+   - **NumClasses**: 2  
+
+   .. code-block:: console
+
+      100%|██████████████████████| 200/200 [00:02<00:00, 81.92it/s]
+      100%|██████████████████████| 100/100 [00:00<00:00, 166.02it/s]
+
+   - **Fidelity**: 0.9384  
+   - **Accuracy**: 0.9288  

@@ -23,21 +23,21 @@ Attack
    * - Class
      - Source
    * - ModelExtractionAttack0
-     - 
+     - Model Extraction Attacks against Graph Neural Network
    * - ModelExtractionAttack1
-     - 
+     - Model Extraction Attacks against Graph Neural Network
    * - ModelExtractionAttack2
-     - 
+     - Model Extraction Attacks against Graph Neural Network
    * - ModelExtractionAttack3
-     - 
+     - Model Extraction Attacks against Graph Neural Network
    * - ModelExtractionAttack4
-     - 
+     - Model Extraction Attacks against Graph Neural Network
    * - ModelExtractionAttack5
-     - 
+     - Model Extraction Attacks against Graph Neural Network
    * - GNNStealing                    
-     - 
+     - Model Stealing Attacks Against Inductive Graph Neural Networks
    * - AdversarialModelExtraction    
-     - 
+     - Adversarial Model Extraction on Graph Neural Networks
 
 .. list-table::
    :widths: 25 75
