@@ -7,6 +7,7 @@ Model_Extraction_Attacks_against_Graph_Neural_Network
    :hidden:
    :titlesonly:
 
+   ModelExtractionAttack
    GraphNeuralNetworkMetric
    Gcn_Net
    Net_shadow
@@ -18,6 +19,9 @@ Model_Extraction_Attacks_against_Graph_Neural_Network
 
    * - Class
      - Usage
+   * - ModelExtractionAttack
+     - Base class for all extraction attacks. Initialize with target dataset and 
+       attack node fraction. Provides core attack utilities.
    * - GraphNeuralNetworkMetric
      - Evaluate GNN model performance. Initialize with model, graph, and features to 
        compute both accuracy and fidelity metrics. Call evaluate() to update metrics.

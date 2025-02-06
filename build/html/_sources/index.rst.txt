@@ -81,7 +81,7 @@ For further information, refer to individual classes like `GraphNeuralNetworkMet
    :caption: API Reference
    :hidden:
 
-   pygip/protect/gnn_mea/pygip_reference
+   pygip/protect/gnn_mea/Attack
    pygip/protect/defense/pygip_protect_defense
    pygip/datasets/pygip_datasets
 

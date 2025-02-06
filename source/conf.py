@@ -40,6 +40,7 @@ html_css_files = ['custom.css']
 html_js_files = ['force_light.js']
 
 html_theme_options = {
+    "collapse_navigation": False,
     "sidebar_hide_name": False,
     "navigation_with_keys": True,
     "footer_icons": [],
