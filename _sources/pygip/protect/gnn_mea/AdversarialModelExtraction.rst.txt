@@ -81,3 +81,23 @@ Notes:
 
     # Executing the attack on the model.
     adversarial_attack.attack()
+
+1. **Adversarial Attack on Cora**
+   
+   - **NumNodes**: 2708  
+   - **NumEdges**: 10556  
+   - **NumFeats**: 1433  
+   - **NumClasses**: 7  
+   - **NumTrainingSamples**: 140  
+   - **NumValidationSamples**: 500  
+   - **NumTestSamples**: 1000  
+
+   .. code-block:: console
+
+      Done loading data from cached files.
+      =========Target Model Generating==========================
+      100%|█████████████████| 200/200 [00:00<00:00, 328.01it/s]
+      100%|█████████████████| 200/200 [00:02<00:00, 85.62it/s]
+
+   - **Fidelity**: 0.767  
+   - **Accuracy**: 0.719  
