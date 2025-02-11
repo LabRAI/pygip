@@ -43,21 +43,25 @@ Attack Modules
      - Class Name
      - Reference
 
+   * - AdversarialModelExtraction
+     - Implements adversarial model extraction attacks on graph neural networks using DGL.
+     - ``AdversarialModelExtraction``
+     - DeFazio, D., & Ramesh, A. (2019). Adversarial model extraction on graph neural networks. *arXiv preprint arXiv:1912.07721.*
+   
    * - ModelExtractionAttack
      - Implements several model extraction attack strategies including feature synthesis and shadow models.
      - ``ModelExtractionAttack0`` - ``ModelExtractionAttack5``
-     - Wu, B., Yang, X., Pan, S., & Yuan, X. (2022). Model extraction attacks on graph neural networks: Taxonomy and realisation. In Proceedings of the 2022 ACM on Asia conference on computer and communications security, 337-350.
+     - Wu, B., Yang, X., Pan, S., & Yuan, X. (2022). Model extraction attacks on graph neural networks: Taxonomy and realisation. *In Proceedings of the 2022 ACM on Asia conference on computer and communications security*, 337-350.
 
    * - GNNStealing
      - Implements model extraction attack creating surrogate models by querying target models and reconstructing their behavior.
      - ``GNNStealing``
-     - Shen, Y., He, X., Han, Y., & Zhang, Y. (2022, May). Model stealing attacks against inductive graph neural networks. In 2022 IEEE Symposium on Security and Privacy (SP) (pp. 1175-1192). IEEE.
+     - Shen, Y., He, X., Han, Y., & Zhang, Y. (2022). Model stealing attacks against inductive graph neural networks. *In 2022 IEEE Symposium on Security and Privacy (SP)*, 1175-1192.
 
    * - GNN_Metric
      - Metrics for evaluating attack effectiveness.
      - ``GraphNeuralNetworkMetric``
-     -
-
+     - 
 
 
 Defense Modules
@@ -74,14 +78,8 @@ Defense Modules
 
    * - Watermark
      - A graph watermarking defense mechanism, leveraging synthetic nodes and features.
-     - ``WatermarkGraph``, ``Watermark_sage``
-     - Zhao, X., Wu, H., & Zhang, X. (2021). Watermarking graph neural networks by random graphs. In 2021 9th International Symposium on Digital Forensics and Security (ISDFS), 1-6. IEEE.
-
-   * - Graph_Merge
-     - Tools to merge the original graph with synthetic watermarked nodes.
-     - ``Defense``
-     -
-
+     - ``WatermarkGraph``
+     - Zhao, X., Wu, H., & Zhang, X. (2021). Watermarking graph neural networks by random graphs. *In 2021 9th International Symposium on Digital Forensics and Security (ISDFS)*, 1-6.
 
 Additional Details
 -------------------
