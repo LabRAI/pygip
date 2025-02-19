@@ -188,7 +188,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -303,7 +303,7 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
@@ -311,8 +311,73 @@
         <article role="main" id="furo-main-content">
           <section id="how-to-contribute">
 <h1>How to Contribute<a class="headerlink" href="#how-to-contribute" title="Link to this heading">¶</a></h1>
-<div class="toctree-wrapper compound">
+<p>PyGIP is designed to be an extensible framework for GNN Intellectual Property protection. Here’s how you can contribute new methods:</p>
+<section id="adding-new-methods">
+<h2>Adding New Methods<a class="headerlink" href="#adding-new-methods" title="Link to this heading">¶</a></h2>
+<section id="choose-the-correct-category">
+<h3>1. Choose the Correct Category<a class="headerlink" href="#choose-the-correct-category" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Place attack methods under <code class="docutils literal notranslate"><span class="pre">models/attacks/</span></code></p></li>
+<li><p>Place defense methods under <code class="docutils literal notranslate"><span class="pre">models/defenses/</span></code></p></li>
+<li><p>All methods should inherit from base classes in <code class="docutils literal notranslate"><span class="pre">models/base/</span></code></p></li>
+</ul>
+</section>
+<section id="implementation-guidelines">
+<h3>2. Implementation Guidelines<a class="headerlink" href="#implementation-guidelines" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Create a new file for your method (e.g., <code class="docutils literal notranslate"><span class="pre">models/attacks/your_method.py</span></code>)</p></li>
+<li><p>Inherit from <code class="docutils literal notranslate"><span class="pre">BaseAttack</span></code> or <code class="docutils literal notranslate"><span class="pre">BaseDefense</span></code> as appropriate</p></li>
+<li><dl class="simple">
+<dt>Implement required interface methods:</dt><dd><ul>
+<li><p>For attacks: <code class="docutils literal notranslate"><span class="pre">train()</span></code>, <code class="docutils literal notranslate"><span class="pre">extract()</span></code>, <code class="docutils literal notranslate"><span class="pre">evaluate()</span></code></p></li>
+<li><p>For defenses: <code class="docutils literal notranslate"><span class="pre">protect()</span></code>, <code class="docutils literal notranslate"><span class="pre">verify()</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="code-integration">
+<h3>3. Code Integration<a class="headerlink" href="#code-integration" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Add your model class to <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> in the respective directory</p></li>
+<li><p>Add any new metrics to <code class="docutils literal notranslate"><span class="pre">utils/metrics.py</span></code></p></li>
+<li><p>Add any new neural network architectures to <code class="docutils literal notranslate"><span class="pre">utils/models.py</span></code></p></li>
+<li><p>If needed, extend dataset functionality in <code class="docutils literal notranslate"><span class="pre">datasets/datasets.py</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="example-structure">
+<h2>Example Structure<a class="headerlink" href="#example-structure" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># models/attacks/your_method.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..base.attack</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseAttack</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">YourAttack</span><span class="p">(</span><span class="n">BaseAttack</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">args</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">victim_model</span><span class="p">,</span> <span class="n">training_data</span><span class="p">):</span>
+        <span class="c1"># Implementation</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">extract</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query_data</span><span class="p">):</span>
+        <span class="c1"># Implementation</span>
+        <span class="k">pass</span>
+</pre></div>
 </div>
+</section>
+<section id="example-implementations">
+<h2>Example Implementations<a class="headerlink" href="#example-implementations" title="Link to this heading">¶</a></h2>
+<p>For detailed examples of implementing different methods, please refer to:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contribute/Model_Extraction_Attacks_against_Graph_Neural_Network/GNN_MEA.html">GNN_MEA</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute/Model_Stealing_Attacks_Against_Inductive_Graph_Neural_Networks/GNNStealing.html">GNNStealing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contribute/Watermarking_Graph_Neural_Networks_By_Random_Graphs/WatermarkDefense.html">WatermarkDefense</a></li>
+</ul>
+</div>
+</section>
 </section>
 
         </article>
@@ -358,8 +423,34 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">How to Contribute</a><ul>
+<li><a class="reference internal" href="#adding-new-methods">Adding New Methods</a><ul>
+<li><a class="reference internal" href="#choose-the-correct-category">1. Choose the Correct Category</a></li>
+<li><a class="reference internal" href="#implementation-guidelines">2. Implementation Guidelines</a></li>
+<li><a class="reference internal" href="#code-integration">3. Code Integration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#example-structure">Example Structure</a></li>
+<li><a class="reference internal" href="#example-implementations">Example Implementations</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
