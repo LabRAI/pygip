@@ -36,32 +36,18 @@ Attack Modules
 
 .. list-table::
    :header-rows: 1
-   :widths: 15 40 20 25
 
-   * - Abbreviation
-     - Description
-     - Class Name
+   * - Class Name
      - Reference
 
-   * - AdversarialModelExtraction
-     - Implements adversarial model extraction attacks on graph neural networks using DGL.
-     - ``AdversarialModelExtraction``
+   * - :doc:`AdvME <pygip/protect/gnn_mea/AdversarialModelExtraction>`
      - DeFazio, D., & Ramesh, A. (2019). Adversarial model extraction on graph neural networks. *arXiv preprint arXiv:1912.07721.*
    
-   * - ModelExtractionAttack
-     - Implements several model extraction attack strategies including feature synthesis and shadow models.
-     - ``ModelExtractionAttack0`` - ``ModelExtractionAttack5``
+   * - :doc:`GNNMEA0-5 <pygip/protect/gnn_mea/ModelExtractionAttack0>`
      - Wu, B., Yang, X., Pan, S., & Yuan, X. (2022). Model extraction attacks on graph neural networks: Taxonomy and realisation. *In Proceedings of the 2022 ACM on Asia conference on computer and communications security*, 337-350.
 
-   * - GNNStealing
-     - Implements model extraction attack creating surrogate models by querying target models and reconstructing their behavior.
-     - ``GNNStealing``
+   * - :doc:`GNNStealing <pygip/protect/gnn_mea/Model_Stealing_Attacks_Against_Inductive_Graph_Neural_Networks>`
      - Shen, Y., He, X., Han, Y., & Zhang, Y. (2022). Model stealing attacks against inductive graph neural networks. *In 2022 IEEE Symposium on Security and Privacy (SP)*, 1175-1192.
-
-   * - GNN_Metric
-     - Metrics for evaluating attack effectiveness.
-     - ``GraphNeuralNetworkMetric``
-     - N/A
 
 
 Defense Modules
@@ -69,16 +55,11 @@ Defense Modules
 
 .. list-table::
    :header-rows: 1
-   :widths: 15 35 20 30
 
-   * - Abbreviation
-     - Description
-     - Class Name
+   * - Class Name
      - Reference
 
-   * - Watermark
-     - A graph watermarking defense mechanism, leveraging synthetic nodes and features.
-     - ``WatermarkGraph``
+   * - :doc:`watermarkMED <pygip/protect/defense/WatermarkDefense>`
      - Zhao, X., Wu, H., & Zhang, X. (2021). Watermarking graph neural networks by random graphs. *In 2021 9th International Symposium on Digital Forensics and Security (ISDFS)*, 1-6.
 
 Additional Details
