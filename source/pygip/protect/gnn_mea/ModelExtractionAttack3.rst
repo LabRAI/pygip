@@ -1,4 +1,4 @@
-ModelExtractionAttack3
+GNNMEA3
 ======================
 
 Shadow model attack using subgraph indices to build partial graphs.

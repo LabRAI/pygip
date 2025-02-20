@@ -1,4 +1,4 @@
-ModelExtractionAttack1
+GNNMEA1
 ======================
 
 Query-based extraction that reads selected nodes from file and builds shadow graph.

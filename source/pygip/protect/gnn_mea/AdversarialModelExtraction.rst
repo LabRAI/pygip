@@ -1,4 +1,4 @@
-AdversarialModelExtraction
+ADVME
 ==========================
 
 A class implementing adversarial model extraction attacks on graph neural networks using DGL.

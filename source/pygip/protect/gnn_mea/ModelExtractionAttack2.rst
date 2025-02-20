@@ -1,4 +1,4 @@
-ModelExtractionAttack2
+GNNMEA2
 ======================
 
 Structure-based extraction using randomly sampled nodes and identity features.

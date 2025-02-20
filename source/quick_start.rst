@@ -3,7 +3,7 @@ Quick Start Guide
 This guide will help you get started with PyGIP quickly.
 
 Initial Setup
------------
+--------------
 
 First, set up your environment:
 
@@ -20,7 +20,7 @@ First, set up your environment:
     export PYTHONPATH=`pwd`
 
 Attack Examples
--------------
+----------------
 
 Model Extraction Attack
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -47,10 +47,10 @@ To run the attack example:
     python3 examples/examples.py
 
 Defense Examples
---------------
+-----------------
 
 Watermarking Defense
-~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
 
@@ -72,10 +72,10 @@ To run the defense example:
     python3 examples/Watermarking_Graph_Neural_Networks_By_Random_Graphs.py
 
 Next Steps
----------
+-----------
 
-For more detailed documentation, please refer to:
+.. For more detailed documentation, please refer to:
 
-- :doc:`pygip_reference` - Complete API reference
-- :doc:`pygip_protect_defense` - Detailed defense mechanisms
-- :doc:`pygip_datasets` - Available datasets
+.. - :doc:`pygip_reference` - Complete API reference
+.. - :doc:`pygip_protect_defense` - Detailed defense mechanisms
+.. - :doc:`pygip_datasets` - Available datasets

@@ -1,4 +1,4 @@
-ModelExtractionAttack0
+GNNMEA0
 ======================
 
 Basic extraction attack that queries a subset of nodes and synthesizes features based on multi-hop neighbors.

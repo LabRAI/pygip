@@ -1,5 +1,5 @@
 How to Contribute
-===============
+==================
 
 PyGIP is designed to be an extensible framework for GNN Intellectual Property protection. Here's how you can contribute new methods:
 
@@ -56,6 +56,5 @@ For detailed examples of implementing different methods, please refer to:
 .. toctree::
    :maxdepth: 1
    
-   contribute/Model_Extraction_Attacks_against_Graph_Neural_Network/GNN_MEA
-   contribute/Model_Stealing_Attacks_Against_Inductive_Graph_Neural_Networks/GNNStealing
-   contribute/Watermarking_Graph_Neural_Networks_By_Random_Graphs/WatermarkDefense
+   contribute/Attack
+   contribute/Defense
