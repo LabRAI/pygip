@@ -1,4 +1,4 @@
-ModelExtractionAttack5
+GNNMEA5
 ======================
 
 Advanced shadow model attack with threshold-based edge linking.

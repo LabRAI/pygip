@@ -1,4 +1,4 @@
-ModelExtractionAttack4
+GNNMEA4
 ======================
 
 Enhanced shadow model attack with feature-based edge linking.
