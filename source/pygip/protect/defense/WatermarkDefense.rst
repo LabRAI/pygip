@@ -1,4 +1,4 @@
-watermarkMED
+WatermarkMED
 =================
 
 Base class for defense operations against model extraction attacks in graph neural networks.

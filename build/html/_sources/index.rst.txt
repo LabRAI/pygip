@@ -43,7 +43,22 @@ Attack Modules
    * - :doc:`AdvME <pygip/protect/gnn_mea/AdversarialModelExtraction>`
      - DeFazio, D., & Ramesh, A. (2019). Adversarial model extraction on graph neural networks. *arXiv preprint arXiv:1912.07721.*
    
-   * - :doc:`GNNMEA0-5 <pygip/protect/gnn_mea/ModelExtractionAttack0>`
+   * - :doc:`GNNMEA0 <pygip/protect/gnn_mea/ModelExtractionAttack0>`
+     - Wu, B., Yang, X., Pan, S., & Yuan, X. (2022). Model extraction attacks on graph neural networks: Taxonomy and realisation. *In Proceedings of the 2022 ACM on Asia conference on computer and communications security*, 337-350.
+  
+   * - :doc:`GNNMEA1 <pygip/protect/gnn_mea/ModelExtractionAttack0>`
+     - Wu, B., Yang, X., Pan, S., & Yuan, X. (2022). Model extraction attacks on graph neural networks: Taxonomy and realisation. *In Proceedings of the 2022 ACM on Asia conference on computer and communications security*, 337-350.
+   
+   * - :doc:`GNNMEA2 <pygip/protect/gnn_mea/ModelExtractionAttack0>`
+     - Wu, B., Yang, X., Pan, S., & Yuan, X. (2022). Model extraction attacks on graph neural networks: Taxonomy and realisation. *In Proceedings of the 2022 ACM on Asia conference on computer and communications security*, 337-350.
+
+   * - :doc:`GNNMEA3 <pygip/protect/gnn_mea/ModelExtractionAttack0>`
+     - Wu, B., Yang, X., Pan, S., & Yuan, X. (2022). Model extraction attacks on graph neural networks: Taxonomy and realisation. *In Proceedings of the 2022 ACM on Asia conference on computer and communications security*, 337-350.
+
+   * - :doc:`GNNMEA4 <pygip/protect/gnn_mea/ModelExtractionAttack0>`
+     - Wu, B., Yang, X., Pan, S., & Yuan, X. (2022). Model extraction attacks on graph neural networks: Taxonomy and realisation. *In Proceedings of the 2022 ACM on Asia conference on computer and communications security*, 337-350.
+
+   * - :doc:`GNNMEA5 <pygip/protect/gnn_mea/ModelExtractionAttack0>`
      - Wu, B., Yang, X., Pan, S., & Yuan, X. (2022). Model extraction attacks on graph neural networks: Taxonomy and realisation. *In Proceedings of the 2022 ACM on Asia conference on computer and communications security*, 337-350.
 
    * - :doc:`GNNStealing <pygip/protect/gnn_mea/Model_Stealing_Attacks_Against_Inductive_Graph_Neural_Networks>`

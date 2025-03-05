@@ -14,6 +14,19 @@ Datasets
    FlickrData
    Photo
    PubMed
+   RedditData
+   Twitter
+   WikiCS
+   YelpData
+   PROTEINS
+   PTC
+   PolblogsData
+   NCI1
+   IMDB
+   MutaData
+   DBLPdata
+   COLLAB
+   LastFMdata
 
 .. list-table::
    :widths: 25 75
