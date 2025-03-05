@@ -22,21 +22,21 @@ Attack
 
    * - Class
      - Source
-   * - ModelExtractionAttack0
+   * - GNNMEA0
      - Model Extraction Attacks against Graph Neural Network
-   * - ModelExtractionAttack1
+   * - GNNMEA1
      - Model Extraction Attacks against Graph Neural Network
-   * - ModelExtractionAttack2
+   * - GNNMEA2
      - Model Extraction Attacks against Graph Neural Network
-   * - ModelExtractionAttack3
+   * - GNNMEA3
      - Model Extraction Attacks against Graph Neural Network
-   * - ModelExtractionAttack4
+   * - GNNMEA4
      - Model Extraction Attacks against Graph Neural Network
-   * - ModelExtractionAttack5
+   * - GNNMEA5
      - Model Extraction Attacks against Graph Neural Network
    * - GNNStealing                    
      - Model Stealing Attacks Against Inductive Graph Neural Networks
-   * - AdversarialModelExtraction    
+   * - ADVME   
      - Adversarial Model Extraction on Graph Neural Networks
 
 .. list-table::
@@ -45,22 +45,22 @@ Attack
 
    * - Class
      - Usage
-   * - ModelExtractionAttack0
+   * - GNNMEA0
      - Basic extraction attack using neighbor features. Synthesizes node features 
        based on first and second-order neighbors with configurable weighting.
-   * - ModelExtractionAttack1
+   * - GNNMEA1
      - Query-based extraction using shadow graph. Reads selected nodes from file 
        and builds attack model based on queried labels.
-   * - ModelExtractionAttack2
+   * - GNNMEA2
      - Structure-based extraction using identity features. Randomly samples nodes 
        and trains attack model with synthetic features.
-   * - ModelExtractionAttack3
+   * - GNNMEA3
      - Shadow model attack using subgraph indices. Merges multiple partial graphs 
        for attack model training.
-   * - ModelExtractionAttack4
+   * - GNNMEA4
      - Enhanced shadow attack with feature-based edge linking. Uses feature 
        similarity to establish connections in attack graph.
-   * - ModelExtractionAttack5
+   * - GNNMEA5
      - Advanced shadow attack with threshold-based linking. Similar to Attack4 but 
        uses distance thresholds for edge creation.
    * - GNNStealing                    
@@ -68,7 +68,7 @@ Attack
        to clone target GNN behavior. Supports multiple feature recovery methods including 
        predictions, embeddings and projections. Uses graph structure preservation and 
        validation through fidelity metrics.
-   * - AdversarialModelExtraction    
+   * - ADVME   
      - Subgraph-based model extraction that samples k-hop neighborhoods and synthesizes 
        features using class-conditional prior distributions. Constructs attack graphs by 
        combining sampled subgraphs and trains a GCN-based surrogate model to replicate 

@@ -15,6 +15,6 @@ Defense
 
    * - Class
      - Source
-   * - Defense
+   * - WatermarkMED
      - Watermarking_Graph_Neural_Networks_By_Random_Graphs
    
