@@ -1,5 +1,6 @@
 How to Cite
 ===========
+If you find it useful, please considering cite the following work:
 
 ```
 @article{GNNIP2025,
