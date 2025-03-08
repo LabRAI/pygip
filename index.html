@@ -34,7 +34,6 @@
     body[data-theme="dark"] {
       --color-code-background: #202020;
   --color-code-foreground: #d0d0d0;
-  
     }
     @media (prefers-color-scheme: dark) {
       body:not([data-theme="light"]) {
@@ -44,6 +43,16 @@
       }
     }
   }
+    .badges-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+    }
+    .badges-container img {
+        height: 28px; /* 调整徽章大小 */
+    }
+  
 </style></head>
   <body>
     
@@ -306,6 +315,15 @@
         <article role="main" id="furo-main-content">
           <div style="margin-top: 50px; text-align: center;">
   <img src="_static/icon.png" alt="PyGIP Icon" style="width: 600px; height: auto;">
+
+  <div class="badges-container">
+    <!-- Docs passing -->
+    <img src="https://img.shields.io/badge/docs-passing-brightgreen.svg" alt="Docs Status">
+    <!-- Testing Status -->
+    <img src="https://img.shields.io/badge/Testing-passing-brightgreen.svg" alt="Testing Status">
+    <!-- License -->
+    <img src="https://img.shields.io/badge/license-BSD--2--Clause-green.svg" alt="License">
+</div>
 </div><hr class="docutils" />
 <p><strong>PyGIP</strong> is a comprehensive Python library focused on model extraction attacks and defenses in Graph Neural Networks (GNNs). Built on PyTorch, PyTorch Geometric, and DGL, the library offers a robust framework for understanding, implementing, and defending against attacks targeting GNN models.</p>
 <p><strong>PyGIP is featured for:</strong></p>
