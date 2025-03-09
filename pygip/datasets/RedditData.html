@@ -44,6 +44,52 @@
       }
     }
   }
+
+    .code-container {
+        position: relative;
+        background-color: #f8f8e6; /*light-yellow background color*/
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+        overflow-x: auto;
+    }
+
+    pre {
+        margin: 0;
+        white-space: pre-wrap; /* 保持换行 */
+    }
+
+    .copy-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        font-size: 12px;
+        cursor: pointer;
+        border-radius: 3px;
+        transition: background 0.3s;
+    }
+
+    .copy-btn:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .citation-box {
+	    background-color: #f8f8e6;  /* 浅黄色背景 */
+	    border-left: 4px solid #ccc; /* 左侧灰色边框 */
+	    padding: 15px;
+	    margin: 20px 0;
+	    font-family: monospace;
+	    font-size: 16px;
+	    white-space: nowrap;  /* 保持换行 */
+	    overflow-x: auto;  /* 允许横向滚动 */
+	    border-radius: 5px;  /* 圆角 */
+	}
 </style></head>
   <body>
     
@@ -306,6 +352,7 @@
         <article role="main" id="furo-main-content">
           <section id="redditdata">
 <h1>RedditData<a class="headerlink" href="#redditdata" title="Link to this heading">¶</a></h1>
+<div class="citation-box">
 <p>Implementation for the Reddit network dataset.</p>
 <p>A graph dataset representing Reddit posts, where nodes are posts and edges indicate that the same user commented on both posts.</p>
 <p><strong>Parameters</strong></p>
@@ -408,7 +455,7 @@ Extracts dataset features, node labels, and masks for training, validation, and 
 <span class="sig-name descname"><span class="pre">edge_index</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">torch.Tensor</span></em><a class="headerlink" href="#edge_index" title="Link to this definition">¶</a></dt>
 <dd><p>Edge list representation (only explicitly set in PyG implementation).</p>
 </dd></dl>
-
+</div>
 </section>
 
         </article>
