@@ -52,6 +52,40 @@
     .badges-container img {
         height: 20px; /* 调整徽章大小 */
     }
+
+    .code-container {
+        position: relative;
+        background-color: #282c34;
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+        overflow-x: auto;
+    }
+
+    pre {
+        margin: 0;
+        white-space: pre-wrap; /* 保持换行 */
+    }
+
+    .copy-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        font-size: 12px;
+        cursor: pointer;
+        border-radius: 3px;
+        transition: background 0.3s;
+    }
+
+    .copy-btn:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
   
 </style></head>
   <body>
@@ -346,6 +380,27 @@
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fidelity: </span><span class="si">{</span><span class="n">attack</span><span class="o">.</span><span class="n">fidelity</span><span class="si">}</span><span class="s2">, Accuracy: </span><span class="si">{</span><span class="n">attack</span><span class="o">.</span><span class="n">accuracy</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+
+<h2>Outlier Detection Using PyGOD with 5 Lines of Code:</h2>
+
+<div class="code-container">
+<button class="copy-btn" onclick="copyCode(this)">Copy</button>
+<pre id="code-block">
+# train a dominant detector
+from pygod.detector import DOMINANT
+
+model = DOMINANT(num_layers=4, epoch=20)  # hyperparameters can be set here
+model.fit(train_data)  # input data is a PyG data object
+
+# get outlier scores on the training data (transductive setting)
+score = model.decision_score_
+
+# predict labels and scores on the testing data (inductive setting)
+pred, score = model.predict(test_data, return_score=True)
+</pre>
+</div>
+
+
 <section id="attack-modules">
 <h2>Attack Modules<a class="headerlink" href="#attack-modules" title="Link to this heading">¶</a></h2>
 <div class="table-wrapper docutils container">
