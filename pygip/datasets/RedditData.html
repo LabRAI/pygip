@@ -352,17 +352,19 @@
         <article role="main" id="furo-main-content">
           <section id="redditdata">
 <h1>RedditData<a class="headerlink" href="#redditdata" title="Link to this heading">¶</a></h1>
-<div class="citation-box">
 <p>Implementation for the Reddit network dataset.</p>
 <p>A graph dataset representing Reddit posts, where nodes are posts and edges indicate that the same user commented on both posts.</p>
 <p><strong>Parameters</strong></p>
+<div class="citation-box">
 <dl class="simple">
 <dt>api_type<span class="classifier">str, optional</span></dt><dd><p>API selection (‘dgl’ or ‘torch_geometric’), defaults to ‘dgl’.</p>
 </dd>
 <dt>path<span class="classifier">str, optional</span></dt><dd><p>Dataset directory path, defaults to ‘./downloads/’.</p>
 </dd>
 </dl>
+</div>
 <p><strong>Methods</strong></p>
+<div class="citation-box">
 <dl class="py method">
 <dt class="sig sig-object py" id="load_dgl_data">
 <span class="sig-name descname"><span class="pre">load_dgl_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#load_dgl_data" title="Link to this definition">¶</a></dt>
@@ -376,8 +378,10 @@ node features, labels, and splits for training, validation, and testing.</p>
 <dd><p>Load Reddit dataset using PyTorch Geometric (PyG) loader.
 Extracts dataset features, node labels, and masks for training, validation, and testing.</p>
 </dd></dl>
-
+</div>
+		  
 <p><strong>Attributes</strong></p>
+<div class="citation-box">
 <dl class="py attribute">
 <dt class="sig sig-object py" id="graph">
 <span class="sig-name descname"><span class="pre">graph</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dgl.DGLGraph</span></em><a class="headerlink" href="#graph" title="Link to this definition">¶</a></dt>
@@ -456,6 +460,7 @@ Extracts dataset features, node labels, and masks for training, validation, and 
 <dd><p>Edge list representation (only explicitly set in PyG implementation).</p>
 </dd></dl>
 </div>
+
 </section>
 
         </article>
