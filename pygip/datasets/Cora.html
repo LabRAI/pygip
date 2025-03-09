@@ -88,7 +88,17 @@
         background-color: rgba(255, 255, 255, 0.3);
     }
 
-
+    .citation-box {
+	    background-color: #f8f8e6;  /* 浅黄色背景 */
+	    border-left: 4px solid #ccc; /* 左侧灰色边框 */
+	    padding: 15px;
+	    margin: 20px 0;
+	    font-family: monospace;
+	    font-size: 14px;
+	    white-space: pre-wrap;  /* 保持换行 */
+	    overflow-x: auto;  /* 允许横向滚动 */
+	    border-radius: 5px;  /* 圆角 */
+	}
   
 </style></head>
   <body>
@@ -352,6 +362,7 @@
         <article role="main" id="furo-main-content">
           <section id="cora">
 <h1>Cora<a class="headerlink" href="#cora" title="Link to this heading">¶</a></h1>
+<div class="citation-box">
 <p>Implementation for the Cora citation network dataset.</p>
 <p>From paper: <u>"Semi-supervised classification with graph convolutional networks"</u></p>
 <p><strong>Parameters</strong></p>
@@ -368,6 +379,7 @@
 <dt>load_tg_data()</dt><dd><p>Load Cora using PyG’s Planetoid loader.</p>
 </dd>
 </dl>
+</div>
 </section>
 
         </article>
