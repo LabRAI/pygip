@@ -87,34 +87,17 @@
         background-color: rgba(255, 255, 255, 0.3);
     }
 
-  .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: white;
-      padding: 10px 20px;
-      display: flex;
-      align-items: center;
-      height: 60px;  /* 确保 header 够高，避免 logo 被隐藏 */
-  }
-  .logo {
-      height: 40px;  /* 确保 logo 可见 */
-  }
+</style>
 
-</style></head>
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/LabRAI/pygip/gh-pages/_static/webpage-icon.png">
+
+</head>
   <body>
     
     <script>
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
-<header class="site-header">
-    <a href="https://labrai.github.io/pygip/index.html">
-        <img src="https://raw.githubusercontent.com/LabRAI/pygip/gh-pages/_static/webpage-icon.png" alt="Documentation Logo" class="logo">
-    </a>
-</header>
-
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
   <symbol id="svg-toc" viewBox="0 0 24 24">
     <title>Contents</title>
