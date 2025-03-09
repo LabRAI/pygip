@@ -382,26 +382,6 @@
 </div>
 </div>
 
-<h2>Outlier Detection Using PyGOD with 5 Lines of Code:</h2>
-
-<div class="code-container">
-<button class="copy-btn" onclick="copyCode(this)">Copy</button>
-<pre id="code-block">
-# train a dominant detector
-from pygod.detector import DOMINANT
-
-model = DOMINANT(num_layers=4, epoch=20)  # hyperparameters can be set here
-model.fit(train_data)  # input data is a PyG data object
-
-# get outlier scores on the training data (transductive setting)
-score = model.decision_score_
-
-# predict labels and scores on the testing data (inductive setting)
-pred, score = model.predict(test_data, return_score=True)
-</pre>
-</div>
-
-
 <section id="attack-modules">
 <h2>Attack Modules<a class="headerlink" href="#attack-modules" title="Link to this heading">¶</a></h2>
 <div class="table-wrapper docutils container">
