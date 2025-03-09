@@ -322,7 +322,7 @@
 <tbody>
 <tr class="row-even"><td><p>Dataset</p></td>
 <td><p>Base class for all dataset implementations. Initialize with desired API type
-(‘dgl’ or ‘torch_geometric’) and data path. Provides standard interface for
+(<code>`dgl`</code> or <code>`torch_geometric`</code>) and data path. Provides standard interface for
 accessing node features, labels, and train/test masks.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Cora</p></td>
@@ -332,23 +332,23 @@ masks are automatically provided.</p></td>
 </tr>
 <tr class="row-even"><td><p>Citeseer</p></td>
 <td><p>Load the Citeseer publication network. Similar to Cora, provides access to graph
-structure, features, and labels. Includes pre-defined train/test splits.</p></td>
+structure, features, and labels. Includes pre-defined <code>train/test</code> splits.</p></td>
 </tr>
 <tr class="row-odd"><td><p>PubMed</p></td>
 <td><p>Load the PubMed biomedical publication network. Access node features representing
-TF-IDF weighted word vectors and labels indicating paper types.</p></td>
+<code>TF-IDF</code> weighted word vectors and labels indicating paper types.</p></td>
 </tr>
 <tr class="row-even"><td><p>FacebookData</p></td>
 <td><p>Load the Facebook page-page network. Access the social network structure and page
-features. Train/test splits are randomly generated with configurable ratio.</p></td>
+features. <code>Train/test</code> splits are randomly generated with configurable ratio.</p></td>
 </tr>
 <tr class="row-odd"><td><p>FlickrData</p></td>
 <td><p>Load the Flickr image network. Access image features and relationship graph.
-Includes pre-defined train/validation/test splits.</p></td>
+Includes pre-defined <code>train/validation/test</code> splits.</p></td>
 </tr>
 <tr class="row-even"><td><p>Computer</p></td>
 <td><p>Load the Amazon computer co-purchase network. Access product features and
-co-purchase relationships. Random train/test split is generated automatically.</p></td>
+co-purchase relationships. Random <code>train/test</code> split is generated automatically.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Photo</p></td>
 <td><p>Load the Amazon photo co-purchase network. Similar to Computer dataset, provides
