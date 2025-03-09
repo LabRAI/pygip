@@ -87,25 +87,18 @@
         background-color: rgba(255, 255, 255, 0.3);
     }
 
-    .icon-container {
+    .site-header {
+        position: fixed; /* 固定在页面顶部 */
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px 20px;
         display: flex;
         align-items: center;
-        padding: 10px;
-        justify-content: center;
     }
     
-    .icon {
-        width: 30px;
-        height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 4px;
-    }
-    
-    .icon img {
-        width: 30px;
-        height: 30px;
+    .logo {
+        height: 30px; /* 调整 logo 尺寸 */
     }
 </style></head>
   <body>
@@ -114,9 +107,9 @@
       document.body.dataset.theme = localStorage.getItem("theme") || "auto";
     </script>
     
-<header class="icon-container">
-    <a href="https://labrai.github.io/pygip/index.html" class="icon">
-        <img src="https://raw.githubusercontent.com/LabRAI/pygip/gh-pages/_static/webpage-icon.png" alt="Documentation">
+<header class="site-header">
+    <a href="https://labrai.github.io/pygip/index.html">
+        <img src="https://raw.githubusercontent.com/LabRAI/pygip/gh-pages/_static/webpage-icon.png" alt="Documentation Logo" class="logo">
     </a>
 </header>
 
