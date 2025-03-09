@@ -94,7 +94,7 @@
 	    padding: 15px;
 	    margin: 20px 0;
 	    font-family: monospace;
-	    font-size: 14px;
+	    font-size: 20px;
 	    white-space: pre-wrap;  /* 保持换行 */
 	    overflow-x: auto;  /* 允许横向滚动 */
 	    border-radius: 5px;  /* 圆角 */
@@ -367,16 +367,16 @@
 <p>From paper: <u>"Semi-supervised classification with graph convolutional networks"</u></p>
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt>api_type<span class="classifier">str, optional</span></dt><dd><p>API selection (‘dgl’ or ‘torch_geometric’), defaults to ‘dgl’.</p>
+<dt>api_type<span class="classifier">str, optional</span></dt><dd><p>API selection (`dgl` or `torch_geometric`), defaults to `dgl`.</p>
 </dd>
-<dt>path<span class="classifier">str, optional</span></dt><dd><p>Dataset directory path, defaults to ‘./’.</p>
+<dt>path<span class="classifier">str, optional</span></dt><dd><p>Dataset directory path, defaults to `./`.</p>
 </dd>
 </dl>
 <p><strong>Methods</strong></p>
 <dl class="simple">
-<dt>load_dgl_data()</dt><dd><p>Load Cora using DGL’s citation graph loader.</p>
+<dt>load_dgl_data()</dt><dd><p>Load Cora using DGL's citation graph loader.</p>
 </dd>
-<dt>load_tg_data()</dt><dd><p>Load Cora using PyG’s Planetoid loader.</p>
+<dt>load_tg_data()</dt><dd><p>Load Cora using PyG's Planetoid loader.</p>
 </dd>
 </dl>
 </div>
