@@ -44,6 +44,52 @@
       }
     }
   }
+    .code-container {
+        position: relative;
+        background-color: #f8f8e6; /*light-yellow background color*/
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+        overflow-x: auto;
+    }
+
+    pre {
+        margin: 0;
+        white-space: pre-wrap; /* 保持换行 */
+    }
+
+    .copy-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        font-size: 12px;
+        cursor: pointer;
+        border-radius: 3px;
+        transition: background 0.3s;
+    }
+
+    .copy-btn:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .citation-box {
+	    background-color: #f8f8e6;  /* 浅黄色背景 */
+	    border-left: 4px solid #ccc; /* 左侧灰色边框 */
+	    padding: 15px;
+	    margin: 20px 0;
+	    font-family: monospace;
+	    font-size: 16px;
+	    white-space: nowrap;  /* 保持换行 */
+	    overflow-x: auto;  /* 允许横向滚动 */
+	    border-radius: 5px;  /* 圆角 */
+	}
+  
 </style></head>
   <body>
     
@@ -306,19 +352,21 @@
         <article role="main" id="furo-main-content">
           <section id="computer">
 <h1>Computer<a class="headerlink" href="#computer" title="Link to this heading">¶</a></h1>
+<div class="citation-box">
 <p>Implementation for the Amazon Computers co-purchase network.</p>
 <p><strong>Parameters</strong></p>
 <dl class="simple">
-<dt>api_type<span class="classifier">str, optional</span></dt><dd><p>API selection (‘dgl’ or ‘torch_geometric’), defaults to ‘dgl’.</p>
+<dt>api_type<span class="classifier">str, optional</span></dt><dd><p>API selection (`dgl` or `torch_geometric`), defaults to `dgl`.</p>
 </dd>
-<dt>path<span class="classifier">str, optional</span></dt><dd><p>Dataset directory path, defaults to ‘./downloads/’.</p>
+<dt>path<span class="classifier">str, optional</span></dt><dd><p>Dataset directory path, defaults to './downloads/' </p>
 </dd>
 </dl>
 <p><strong>Methods</strong></p>
 <dl class="simple">
-<dt>load_dgl_data()</dt><dd><p>Load Computer data using DGL’s dataset loader.</p>
+<dt>load_dgl_data()</dt><dd><p>Load Computer data using DGL's dataset loader.</p>
 </dd>
 </dl>
+</div>
 </section>
 
         </article>
