@@ -372,14 +372,12 @@
 <p>Outlier Detection Example with 5 Lines of Code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">gnn_mae</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelExtractionAttack2</span>
 <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-<pre id="code-block">
 <span class="n">dataset</span> <span class="o">=</span> <span class="o">...</span>  <span class="c1"># Load your graph dataset as a DGL object</span>
 <span class="n">attack</span> <span class="o">=</span> <span class="n">ModelExtractionAttack2</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">attack_node_fraction</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
 <span class="n">attack</span><span class="o">.</span><span class="n">attack</span><span class="p">()</span>
 
 <span class="c1"># Evaluate fidelity and accuracy</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fidelity: </span><span class="si">{</span><span class="n">attack</span><span class="o">.</span><span class="n">fidelity</span><span class="si">}</span><span class="s2">, Accuracy: </span><span class="si">{</span><span class="n">attack</span><span class="o">.</span><span class="n">accuracy</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre>
 </pre>
 </div>
 </div>
