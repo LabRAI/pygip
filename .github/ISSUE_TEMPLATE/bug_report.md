@@ -1,45 +1,23 @@
 ---
-name: 🐛 Bug Report
-about: Report a bug or unexpected behavior
-title: "[Bug] "
+name: Bug report
+about: Report a problem with PyHazards
 labels: bug
-assignees: ''
-
 ---
 
-## 🐞 Describe the Bug
+**Describe the bug**
+A clear and concise description of what went wrong.
 
-A clear and concise description of what the bug is.
+**To Reproduce**
+Steps or code to reproduce the behavior.
 
-## 📋 To Reproduce
+**Expected behavior**
+What you expected to happen.
 
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Run '...'
-3. Observe '...'
+**Environment**
+- Python version:
+- OS:
+- PyHazards version:
+- Torch version:
 
-## ✅ Expected Behavior
-
-A clear and concise description of what you expected to happen.
-
-## 🖼️ Screenshots or Logs
-
-If applicable, add screenshots or log snippets to help explain your problem.
-
-## 🧾 System Information
-
-Please complete the following information:
-- OS: [e.g., Ubuntu 20.04 / macOS 13]
-- Python version: [e.g., 3.8]
-- Framework version (e.g., PyTorch, TensorFlow, etc.): 
-- Package version (if applicable):
-
-## 📎 Additional Context
-
-Add any other context about the problem here.
-
----
-
-<!--
-Thanks for reporting! We’ll get back to you soon.
--->
+**Additional context**
+Add any other context, logs, or screenshots about the problem.

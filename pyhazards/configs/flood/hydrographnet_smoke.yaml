@@ -1,0 +1,25 @@
+benchmark:
+  name: flood
+  hazard_task: flood.streamflow
+  metrics:
+    - mae
+    - rmse
+    - nse
+    - kge
+  eval_split: test
+dataset:
+  name: hydrobench_streamflow
+  params:
+    micro: true
+model:
+  name: hydrographnet
+  task: regression
+  params:
+    node_in_dim: 2
+    edge_in_dim: 3
+    out_dim: 1
+report:
+  output_dir: reports/flood
+  formats:
+    - json
+seed: 7

@@ -1,37 +1,27 @@
-# 📦 Pull Request Template
+<!-- pyhazards:model-pr -->
 
-Thank you for your contribution! Please complete the checklist and provide relevant details below to help us review your PR effectively.
+## PR Type
+- [ ] Model contribution
+- [ ] Non-model change
 
----
+## Model Summary
+Describe the model architecture, intended public API, and what was ported from the paper or source repository.
+If this is not a model PR, write `N/A`.
 
-## 📋 Summary
+## Hazard Scenario
+State the hazard family that should own the model table entry (for example, Wildfire or Flood).
+If this introduces a new hazard scenario, name it explicitly here.
 
-<!-- Describe the purpose of this PR and the changes introduced -->
+## Registry Name
+List the `build_model(name=...)` entrypoints added or changed in this PR.
 
----
+## Paper / Source
+Link the paper, upstream repository, or technical reference used for the implementation.
 
-## 🧪 Related Issues
+## Smoke Test
+Document the smoke test command(s) you ran locally, or reference the updated
+`pyhazards/model_cards/<model_name>.yaml` smoke-test spec.
 
-<!-- List related issues or link them with `Fixes #xx`, `Closes #xx`, etc. -->
-
----
-
-## ✅ Checklist
-
-- [ ] My code follows the project's coding style
-- [ ] I have tested the changes and verified that they work
-- [ ] I have added necessary documentation (if applicable)
-- [ ] I have linked related issues above (if any)
-- [ ] The PR is made from a feature branch, not `main`
-
----
-
-## 🧠 Additional Context (Optional)
-
-<!-- Add screenshots, logs, or anything else reviewers might find helpful -->
-
----
-
-<!--
-PRs that do not follow this template may be delayed or closed. Thank you for contributing!
--->
+## Parity Notes
+List any intentional differences from the original implementation, especially if optimizer,
+preprocessing, outputs, or training objectives changed.

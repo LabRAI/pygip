@@ -1,238 +1,183 @@
-## Implementation
+# Model Implementation Guide for Collaborators
 
-PyGIP is built to be modular and extensible, allowing contributors to implement their own attack and defense strategies.
-Below, we detail how to extend the framework by implementing custom attack and defense classes, with a focus on how to
-leverage the provided dataset structure.
+This guide explains how to port a model from an original paper repository into PyHazards with minimal friction and maximum reproducibility.
 
-### Dataset
+## 1. Start from a paper-to-library mapping
 
-The `Dataset` class standardizes the data format across PyGIP. Here’s its structure:
+Before coding, build a short mapping table from the original repo:
 
-```python
-class Dataset(object):
-    def __init__(self, api_type='dgl', path='./data'):
-        assert api_type in {'dgl', 'pyg'}, 'API type must be dgl or pyg'
-        self.api_type = api_type
-        self.path = path
-        self.dataset_name = self.get_name()
+- paper module/class name -> new `pyhazards/models/<model_name>.py` class
+- paper training inputs/targets -> PyHazards `DataBundle` split format
+- paper config keys -> builder kwargs/defaults in `register_model(...)`
+- paper loss/metrics -> PyTorch loss and optional `pyhazards.metrics` usage
 
-        # DGLGraph or PyGData
-        self.graph_dataset = None
-        self.graph_data = None
+This avoids ad-hoc ports and makes review easier.
 
-        # meta data
-        self.num_nodes = 0
-        self.num_features = 0
-        self.num_classes = 0
-```
+## 2. Define the PyHazards model contract first
 
-- **Importance**: We are currently using the default api_type='pyg' to load the data. It is important to note that when
-  api_type='pyg', `self.graph_data` should be an instance of `torch_geometric.data.Data`. In your implementation, make
-  sure
-  to use our defined Dataset class to build your code.
-
-### Device
-
-To ensure consistency and simplicity when managing CUDA devices across attacks and defenses, we follow the convention
-below:
-
-- Both `BaseAttack` and `BaseDefense` define the device attribute `self.device` in their `__init__()` method.
-- Subclasses should not manually redefine or modify the device logic.
-- If you are implementing a custom attack or defense class, simply inherit from `BaseAttack` or `BaseDefense`.
-- You can directly access the device using: `x = x.to(self.device)`
-
-### Implementing Attack
-
-To create a custom attack, you need to extend the abstract base class `BaseAttack`. Here’s the structure
-of `BaseAttack`:
+In PyHazards, models are built with:
 
 ```python
-class BaseAttack(ABC):
-    supported_api_types = set()
-    supported_datasets = set()
-
-    def __init__(self, dataset: Dataset, attack_node_fraction: float = None, model_path: str = None,
-                 device: Optional[Union[str, torch.device]] = None):
-        self.device = torch.device(device) if device else get_device()
-        print(f"Using device: {self.device}")
-
-        # graph data
-        self.dataset = dataset
-        self.graph_dataset = dataset.graph_dataset
-        self.graph_data = dataset.graph_data
-
-        # meta data
-        self.num_nodes = dataset.num_nodes
-        self.num_features = dataset.num_features
-        self.num_classes = dataset.num_classes
-
-        # params
-        self.attack_node_fraction = attack_node_fraction
-        self.model_path = model_path
-
-        self._check_dataset_compatibility()
+from pyhazards.models import build_model
+model = build_model(name="<model_name>", task="<task>", **kwargs)
 ```
 
-To implement your own attack:
+Your builder must:
 
-1. **Inherit from `BaseAttack`**:
-   Create a new class that inherits from `BaseAttack`. You’ll need to provide the following required parameters in the
-   constructor:
+- accept `task: str`
+- accept model hyperparameters (for example, `in_dim`, `hidden_dim`)
+- return `nn.Module`
+- validate unsupported tasks early with clear errors
 
-- `dataset`: An instance of the `Dataset` class (see below for details).
-- `attack_node_fraction`: A float between 0 and 1 representing the fraction of nodes to attack.
-- `model_path` (optional): A string specifying the path to a pre-trained model (defaults to `None`).
+For portability, always include `**kwargs` in the builder signature so extra config keys do not break the call path.
 
-You need to implement following methods:
+## 3. Implement the model module
 
-- `attack()`: Add main attack logic here. If multiple attack types are supported, define the attack type as an optional
-  argument to this function.  
-  For each specific attack type, implement a corresponding helper function such as `_attack_type1()`
-  or `_attack_type2()`,  
-  and call the appropriate helper inside `attack()` based on the given method name.
-- `_load_model()`: Load victim model.
-- `_train_target_model()`: Train victim model.
-- `_train_attack_model()`: Train attack model.
-- `_helper_func()`(optional): Add your helper functions based on your needs, but keep the methods private.
+Create `pyhazards/models/<model_name>.py` and include:
 
-2. **Implement the `attack()` Method**:
-   Override the abstract `attack()` method with your attack logic, and return a dict of results. For example:
+1. main model class inheriting `nn.Module`
+2. optional helper blocks/losses
+3. builder function `<model_name>_builder(...)`
+
+Use explicit input-shape checks in `forward()` (existing models do this) so failures are actionable.
+
+Template:
 
 ```python
-class MyCustomAttack(BaseAttack):
-    supported_api_types = {"pyg"}  # "pyg" or "dgl"
-    supported_datasets = {"Cora"}  # you can leave this blank if your method supports all datasets 
+from __future__ import annotations
+import torch
+import torch.nn as nn
 
-    def __init__(self, dataset: Dataset, attack_node_fraction: float, model_path: str = None):
-        super().__init__(dataset, attack_node_fraction, model_path)
-        # Additional initialization if needed
 
-    def attack(self):
-        # Example: Access the graph and perform an attack
-        print(f"Attacking {self.attack_node_fraction * 100}% of nodes")
-        num_nodes = self.graph.num_nodes()
-        print(f"Graph has {num_nodes} nodes")
-        # Add your attack logic here
-        return {
-            'metric1': 'metric1 here',
-            'metric2': 'metric2 here'
-        }
+class MyModel(nn.Module):
+    def __init__(self, in_dim: int, out_dim: int, hidden_dim: int = 128):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(in_dim, hidden_dim),
+            nn.ReLU(),
+            nn.Linear(hidden_dim, out_dim),
+        )
 
-    def _load_model(self):
-        # add your logic here
-        pass
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        if x.ndim != 2:
+            raise ValueError(f"Expected (B, F), got {tuple(x.shape)}")
+        return self.net(x)
 
-    def _train_target_model(self):
-        # add your logic here
-        pass
 
-    def _train_attack_model(self):
-        # add your logic here
-        pass
+def my_model_builder(task: str, in_dim: int, out_dim: int, hidden_dim: int = 128, **kwargs) -> nn.Module:
+    _ = kwargs
+    if task.lower() not in {"classification", "regression"}:
+        raise ValueError(f"MyModel does not support task='{task}'")
+    return MyModel(in_dim=in_dim, out_dim=out_dim, hidden_dim=hidden_dim)
 ```
 
-### Implementing Defense
+## 4. Register the model in the registry
 
-To create a custom defense, you need to extend the abstract base class `BaseDefense`. Here’s the structure
-of `BaseDefense`:
+Edit `pyhazards/models/__init__.py`:
+
+1. import the class and builder
+2. add symbols to `__all__`
+3. call `register_model(...)` with stable defaults
+
+Example:
 
 ```python
-class BaseDefense(ABC):
-    supported_api_types = set()
-    supported_datasets = set()
+from .my_model import MyModel, my_model_builder
 
-    def __init__(self, dataset: Dataset, attack_node_fraction: float,
-                 device: Optional[Union[str, torch.device]] = None):
-        self.device = torch.device(device) if device else get_device()
-        print(f"Using device: {self.device}")
-
-        # graph data
-        self.dataset = dataset
-        self.graph_dataset = dataset.graph_dataset
-        self.graph_data = dataset.graph_data
-
-        # meta data
-        self.num_nodes = dataset.num_nodes
-        self.num_features = dataset.num_features
-        self.num_classes = dataset.num_classes
-
-        # params
-        self.attack_node_fraction = attack_node_fraction
-
-        self._check_dataset_compatibility()
+register_model(
+    "my_model",
+    my_model_builder,
+    defaults={"hidden_dim": 128},
+)
 ```
 
-To implement your own defense:
+If you skip registration, `build_model(name="my_model", ...)` will fail.
 
-1. **Inherit from `BaseDefense`**:
-   Create a new class that inherits from `BaseDefense`. You’ll need to provide the following required parameters in the
-   constructor:
+## 5. Match data format to your forward signature
 
-- `dataset`: An instance of the `Dataset` class (see below for details).
-- `attack_node_fraction`: A float between 0 and 1 representing the fraction of nodes to attack.
-- `model_path` (optional): A string specifying the path to a pre-trained model (defaults to `None`).
+`Trainer` supports two input patterns:
 
-You need to implement following methods:
+- tensor pairs: `inputs` and `targets` as tensors
+- dataset objects: `inputs` as `torch.utils.data.Dataset` (recommended for graph/structured inputs)
 
-- `defense()`: Add main defense logic here. If multiple defense types are supported, define the defense type as an
-  optional argument to this function.  
-  For each specific defense type, implement a corresponding helper function such as `_defense_type1()`
-  or `_defense_type2()`,  
-  and call the appropriate helper inside `defense()` based on the given method name.
-- `_load_model()`: Load victim model.
-- `_train_target_model()`: Train victim model.
-- `_train_defense_model()`: Train defense model.
-- `_train_surrogate_model()`: Train attack model.
-- `_helper_func()`(optional): Add your helper functions based on your needs, but keep the methods private.
+For complex models (for example graph models), return dict-like batches from your dataset/collate function so `model(batch_dict)` works directly.
 
+Use `DataBundle` metadata to make construction explicit:
 
-2. **Implement the `defense()` Method**:
-   Override the abstract `defense()` method with your defense logic, and return a dict of results. For example:
+- `FeatureSpec(input_dim=..., channels=...)`
+- `LabelSpec(task_type="classification|regression|segmentation", num_targets=...)`
 
-```python
-class MyCustomDefense(BaseDefense):
-    supported_api_types = {"pyg"}  # "pyg" or "dgl"
-    supported_datasets = {"Cora"}  # you can leave this blank if your method supports all datasets 
+## 6. Port training logic carefully
 
-    def defend(self):
-        # Step 1: Train target model
-        target_model = self._train_target_model()
-        # Step 2: Attack target model
-        attack = MyCustomAttack(self.dataset, attack_node_fraction=0.3)
-        attack.attack(target_model)
-        # Step 3: Train defense model
-        defense_model = self._train_defense_model()
-        # Step 4: Test defense against attack
-        attack = MyCustomAttack(self.dataset, attack_node_fraction=0.3)
-        attack.attack(defense_model)
-        # Print performance metrics
+Do not copy the paper repo training loop verbatim unless required. In most cases:
 
-    def _load_model(self):
-        # add your logic here
-        pass
+- keep model logic inside `nn.Module`
+- use `pyhazards.engine.Trainer` for fit/evaluate/predict
+- keep custom losses as separate classes in the model module
 
-    def _train_target_model(self):
-        # add your logic here
-        pass
+If the paper model needs custom multi-output behavior, document output shape and expected loss computation in the PR.
 
-    def _train_defense_model(self):
-        # add your logic here
-        pass
+## 7. Add a reproducible smoke test
 
-    def _train_surrogate_model(self):
-        # add your logic here
-        pass
-```
+At minimum, verify:
 
-### Miscellaneous Tips
+1. model builds from registry
+2. one forward pass succeeds with realistic tensor shapes
+3. one short `Trainer.fit(...)` + `evaluate(...)` run works
 
-- **Reference Implementation**: The `ModelExtractionAttack0` class is a fully implemented attack example. Study it for
-  inspiration or as a template.
-- **Flexibility**: Add as many helper functions as needed within your class to keep your code clean and modular.
-- **Backbone Models**: We provide several basic backbone models like `GCN, GraphSAGE`. You can use or add more
-  at `from models.nn import GraphSAGE`.
-- **Example Scripts**: Please provide an example script in the `examples/` folder demonstrating how to run your code. This
-  will significantly speed up our code review process.
+Use existing examples (`test.py`, `pyhazards/models/hydrographnet.py`) as reference for strict shape checks and integration behavior.
 
-By following these guidelines, you can seamlessly integrate your custom attack or defense strategies into PyGIP. Happy
-coding!
+## 8. Document the new model
+
+Update docs so users can discover and run it:
+
+1. add or update `pyhazards/model_cards/<model_name>.yaml`
+2. keep the paper citation, usage snippet, and smoke-test spec in that card
+3. set `include_in_public_catalog: false` in the card when a model should stay implemented but not appear in the public model table
+4. run `python scripts/render_model_docs.py` if you want to preview the generated pages locally
+5. when you need the published GitHub Pages site updated locally too, run:
+   ```bash
+   cd docs
+   sphinx-build -b html source build/html
+   cp -r build/html/* .
+   ```
+
+The model page and per-model docs are generated automatically from the card, including new
+hazard-scenario tables when needed. Keep the card focused on I/O contract, supported tasks,
+and one runnable example.
+
+## 9. Recommended collaborator workflow
+
+For each new paper model contribution:
+
+1. open an issue with paper link + proposed API (`name`, `task`, required kwargs)
+2. submit PR with model file, registry wiring, and smoke-test commands
+3. include a short “paper parity note” listing intentional differences from the original repo (for example, optimizer, scheduler, or preprocessing changes)
+4. complete the PR template so the automation bot can match the described model to the implementation
+
+This keeps implementations reviewable and scientifically traceable.
+
+## 10. Pre-PR checklist
+
+- [ ] model file added under `pyhazards/models/`
+- [ ] builder validates task and returns `nn.Module`
+- [ ] model registered in `pyhazards/models/__init__.py`
+- [ ] `pyhazards/model_cards/<model_name>.yaml` added or updated
+- [ ] `build_model(name=..., task=...)` works
+- [ ] forward pass shape checks and error messages are clear
+- [ ] minimal train/eval smoke test executed
+- [ ] PR template sections completed with paper/source, smoke-test, and parity notes
+
+## 11. Automation setup
+
+The PR automation added in `.github/workflows/` expects:
+
+- repository workflow permissions that allow `contents: write` and `pull-requests: write`
+
+Once configured, the workflow does the following for catalog-backed model PRs:
+
+1. validate the PR against the model contract and smoke-test spec
+2. comment with actionable blockers when the implementation is not ready
+3. merge passing PRs automatically
+4. regenerate the model page and module docs on the resulting push
+5. rebuild the committed `docs/` HTML site so GitHub Pages reflects the new catalog

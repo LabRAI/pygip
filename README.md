@@ -1,118 +1,181 @@
-# PyGIP
+<p align="center">
+  <img src="docs/source/_static/logo.png" alt="PyHazards logo" width="220" />
+</p>
 
-[![PyPI - Version](https://img.shields.io/pypi/v/PyGIP)](https://pypi.org/project/PyGIP)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/LabRAI/PyGIP/docs.yml)](https://github.com/LabRAI/PyGIP/actions)
-[![License](https://img.shields.io/github/license/LabRAI/PyGIP.svg)](https://github.com/LabRAI/PyGIP/blob/main/LICENSE)
-[![PyPI - Downloads](https://img.shields.io/pypi/dm/pygip)](https://github.com/LabRAI/PyGIP)
-[![Issues](https://img.shields.io/github/issues/LabRAI/PyGIP)](https://github.com/LabRAI/PyGIP)
-[![Pull Requests](https://img.shields.io/github/issues-pr/LabRAI/PyGIP)](https://github.com/LabRAI/PyGIP)
-[![Stars](https://img.shields.io/github/stars/LabRAI/PyGIP)](https://github.com/LabRAI/PyGIP)
-[![GitHub forks](https://img.shields.io/github/forks/LabRAI/PyGIP)](https://github.com/LabRAI/PyGIP)
+<h1 align="center">PyHazards: A Python framework for AI-powered hazard prediction</h1>
 
-PyGIP is a Python library designed for experimenting with graph-based model extraction attacks and defenses. It provides
-a modular framework to implement and test attack and defense strategies on graph datasets.
+<p align="center">
+  Datasets · Models · Benchmarks · Training Pipelines · Evaluation
+</p>
 
-## How to Cite
+<p align="center">
+  <a href="https://pypi.org/project/pyhazards">
+    <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fpypi.org%2Fpypi%2Fpyhazards%2Fjson&query=%24.info.version&prefix=v&label=PyPI" alt="PyPI version" />
+  </a>
+  <a href="https://github.com/LabRAI/PyHazards/actions/workflows/ci.yml">
+    <img src="https://img.shields.io/github/actions/workflow/status/LabRAI/PyHazards/ci.yml?branch=main" alt="Build status" />
+  </a>
+  <a href="https://github.com/LabRAI/PyHazards/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-green" alt="License" />
+  </a>
+  <a href="https://github.com/LabRAI/PyHazards/stargazers">
+    <img src="https://img.shields.io/github/stars/LabRAI/PyHazards?label=stars" alt="GitHub stars" />
+  </a>
+  <a href="https://github.com/LabRAI/PyHazards/network/members">
+    <img src="https://img.shields.io/github/forks/LabRAI/PyHazards?label=forks" alt="GitHub forks" />
+  </a>
+</p>
 
-If you find it useful, please considering cite the following work:
+<p align="center">
+  <a href="https://labrai.github.io/PyHazards/"><strong>Documentation</strong></a> ·
+  <a href="https://github.com/LabRAI/PyHazards"><strong>GitHub</strong></a> ·
+  <a href="https://rai-lab-workspace.slack.com/archives/C0AKAJCTY4F"><strong>Slack</strong></a>
+</p>
 
-```bibtex
-@article{li2025intellectual,
-  title={Intellectual Property in Graph-Based Machine Learning as a Service: Attacks and Defenses},
-  author={Li, Lincan and Shen, Bolin and Zhao, Chenxi and Sun, Yuxiang and Zhao, Kaixiang and Pan, Shirui and Dong, Yushun},
-  journal={arXiv preprint arXiv:2508.19641},
-  year={2025}
-}
-```
+## Overview
 
+PyHazards is built for hazard-AI work that needs more than a single model or
+paper reproduction. It unifies dataset discovery, model construction,
+benchmark-aligned evaluation, and experiment plumbing so the same library can
+support first-run baselines, comparative studies, and contributor extensions.
+
+Intended users:
+
+- **Researchers**: run benchmark-aligned experiments and compare baselines across hazard tasks.
+- **Practitioners**: reuse hazard-specific workflows for data inspection, model building, and evaluation.
+- **Contributors**: extend datasets, models, and benchmarks through registry and catalog patterns already used in the repo.
+
+## Why PyHazards
+
+- **Unified datasets**: public hazard datasets, forcing sources, and inspection entrypoints live in one curated catalog.
+- **Benchmark-aligned evaluation**: shared benchmark families, smoke configs, and reports keep experiments comparable.
+- **Registry-based models**: published baselines and adapters are built through a consistent model-registry surface.
+- **Shared training and inference pipelines**: one engine layer supports fit, evaluate, predict, and benchmark execution workflows.
+
+## Hazard Coverage
+
+- **Wildfire**: danger forecasting, weekly forecasting, spread baselines, fuels, burn products, and active-fire sources.
+- **Earthquake**: waveform picking, dense-grid forecasting adapters, and linked benchmark ecosystems for picking and forecasting.
+- **Flood**: streamflow and inundation baselines with benchmark-backed evaluation paths.
+- **Tropical Cyclone**: track-and-intensity forecasting baselines plus shared benchmark ecosystems and adapters.
 
 ## Installation
 
-PyGIP supports both CPU and GPU environments. Make sure you have Python installed (version >= 3.8, <3.13).
-
-### Base Installation
-
-First, install the core package:
+Install PyHazards from PyPI:
 
 ```bash
-pip install PyGIP
+pip install pyhazards
 ```
 
-This will install PyGIP with minimal dependencies.
-
-### CPU Version
-
-```bash
-pip install "PyGIP[torch,dgl]" \
-  --index-url https://download.pytorch.org/whl/cpu \
-  --extra-index-url https://pypi.org/simple \
-  -f https://data.dgl.ai/wheels/repo.html
-```
-
-### GPU Version (CUDA 12.1)
+If you need GPU execution, install a compatible PyTorch build first and then
+select the device as needed:
 
 ```bash
-pip install "PyGIP[torch,dgl]" \
-  --index-url https://download.pytorch.org/whl/cu121 \
-  --extra-index-url https://pypi.org/simple \
-  -f https://data.dgl.ai/wheels/torch-2.3/cu121/repo.html
+export PYHAZARDS_DEVICE=cuda:0
 ```
 
 ## Quick Start
 
-Here’s a simple example to launch a Model Extraction Attack using PyGIP:
+Use this as the shortest benchmark-aware starter path: verify the package,
+build one registered model, and run one smoke benchmark config.
+
+1. Verify the installation:
+
+```bash
+python -c "import pyhazards; print(pyhazards.__version__)"
+```
+
+2. Build a registered model:
 
 ```python
-from datasets import Cora
-from models.attack import ModelExtractionAttack0
+from pyhazards.models import build_model
 
-# Load the Cora dataset
-dataset = Cora()
-
-# Initialize the attack with a sampling ratio of 0.25
-mea = ModelExtractionAttack0(dataset, 0.25)
-
-# Execute the attack
-mea.attack()
+model = build_model(
+    name="hydrographnet",
+    task="regression",
+    node_in_dim=2,
+    edge_in_dim=3,
+    out_dim=1,
+)
+print(type(model).__name__)
 ```
 
-This code loads the Cora dataset, initializes a basic model extraction attack (`ModelExtractionAttack0`), and runs the
-attack with a specified sampling ratio.
+3. Run a benchmark-aligned smoke configuration:
 
-And a simple example to run a Defense method against Model Extraction Attack:
-
-```python
-from datasets import Cora
-from models.defense import RandomWM
-
-# Load the Cora dataset
-dataset = Cora()
-
-# Initialize the attack with a sampling ratio of 0.25
-med = RandomWM(dataset, 0.25)
-
-# Execute the defense
-med.defend()
+```bash
+python scripts/run_benchmark.py --config pyhazards/configs/flood/hydrographnet_smoke.yaml
 ```
 
-which runs the Random Watermarking Graph to defend against MEA.
+4. Continue with the full docs for dataset inspection, benchmark pages, and
+training workflows.
 
-If you want to use cuda, please set environment variable:
+## Project Structure
 
-```shell
-export PYGIP_DEVICE=cuda:0
+- `pyhazards.datasets` - dataset catalog, registry surfaces, and inspection entrypoints.
+- `pyhazards.models` - model registry, builders, and reusable baseline implementations.
+- `pyhazards.benchmarks` - benchmark families, ecosystem mappings, and evaluation contracts.
+- `pyhazards.engine` - shared training, inference, runner, and experiment utilities.
+- `pyhazards.configs` - smoke and example benchmark configurations.
+- `docs/` and `docs/source/` - published documentation, generated catalogs, and contributor guides.
+
+## Supported Workflows
+
+- inspect hazard datasets and forcing sources before training,
+- build baseline and adapter models through the unified registry,
+- run smoke tests and benchmark configs for hazard-specific tasks,
+- export benchmark reports and compare metrics across models,
+- extend the library with new datasets, models, benchmarks, and catalog entries.
+
+## Documentation
+
+Full documentation: [https://labrai.github.io/PyHazards](https://labrai.github.io/PyHazards)
+
+Recommended reading order:
+
+1. [Installation](https://labrai.github.io/PyHazards/installation.html)
+2. [Quick Start](https://labrai.github.io/PyHazards/quick_start.html)
+3. [Datasets](https://labrai.github.io/PyHazards/pyhazards_datasets.html)
+4. [Models](https://labrai.github.io/PyHazards/pyhazards_models.html)
+5. [Benchmarks](https://labrai.github.io/PyHazards/pyhazards_benchmarks.html)
+6. [Implementation Guide](https://labrai.github.io/PyHazards/implementation.html)
+
+## Contributing
+
+If you want to extend PyHazards:
+
+- **Contributing guide**: [.github/CONTRIBUTING.md](.github/CONTRIBUTING.md)
+- **Developer implementation guide**: [docs/source/implementation.rst](docs/source/implementation.rst)
+- **Maintainer notes**: [.github/IMPLEMENTATION.md](.github/IMPLEMENTATION.md)
+
+Roadmap themes:
+
+- more benchmark ecosystems and external data adapters,
+- more hazard-specific baselines and evaluation coverage,
+- expanded reproducibility, report tooling, and smoke-test coverage,
+- stronger examples, tutorials, and contributor automation.
+
+## Community
+
+- **Slack**: [RAI Lab Slack Channel](https://rai-lab-workspace.slack.com/archives/C0AKAJCTY4F)
+
+Project activity:
+
+[![Star History Chart](https://api.star-history.com/svg?repos=LabRAI/PyHazards&type=Date&from=2026-01-01)](https://www.star-history.com/#LabRAI/PyHazards&Date)
+
+## Citation
+
+If you use PyHazards in your research, please cite:
+
+```bibtex
+@misc{pyhazards2025,
+  title        = {PyHazards: An Open-Source Library for AI-Powered Hazard Prediction},
+  author       = {Cheng et al.},
+  year         = {2025},
+  howpublished = {\url{https://github.com/LabRAI/PyHazards}},
+  note         = {GitHub repository}
+}
 ```
-
-## Implementation & Contributors Guideline
-
-Refer to [Implementation Guideline](.github/IMPLEMENTATION.md)
-
-Refer to [Contributors Guideline](.github/CONTRIBUTING.md)
 
 ## License
 
-[BSD 2-Clause License](LICENSE)
-
-## Contact
-
-For questions or contributions, please contact blshen@fsu.edu.
+[MIT License](LICENSE)

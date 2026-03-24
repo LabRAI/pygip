@@ -1,0 +1,1243 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="../">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
+        <link rel="canonical" href="https://labrai.github.io/PyHazards/api/pyhazards.html" />
+
+    <!-- Generated with Sphinx 8.1.3 and Furo 2024.08.06 -->
+        <title>pyhazards package - PyHazards 1.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=aab0eeca" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">PyHazards 1.0.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  
+  <span class="sidebar-brand-text">PyHazards 1.0.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../quick_start.html">Quick Start</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../pyhazards_datasets.html">Datasets</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle navigation of Datasets</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/merra2.html">merra2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/era5.html">merra2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/noaa_flood.html">noaa_flood.rst</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/firms.html">merra2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/mtbs.html">merra2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/landfire.html">merra2</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pyhazards_models.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pyhazards_engine.html">Engine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pyhazards_metrics.html">Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pyhazards_utils.html">Utils</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional Information</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../implementation.html">Implementation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cite.html">How to Cite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../team.html">Core Team</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="../_sources/api/pyhazards.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="pyhazards-package">
+<h1>pyhazards package<a class="headerlink" href="#pyhazards-package" title="Link to this heading">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pyhazards.datasets.html">pyhazards.datasets package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.datasets.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.datasets.html#module-pyhazards.datasets.base">pyhazards.datasets.base module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.DataBundle"><code class="docutils literal notranslate"><span class="pre">DataBundle</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.DataBundle.feature_spec"><code class="docutils literal notranslate"><span class="pre">DataBundle.feature_spec</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.DataBundle.get_split"><code class="docutils literal notranslate"><span class="pre">DataBundle.get_split()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.DataBundle.label_spec"><code class="docutils literal notranslate"><span class="pre">DataBundle.label_spec</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.DataBundle.metadata"><code class="docutils literal notranslate"><span class="pre">DataBundle.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.DataBundle.splits"><code class="docutils literal notranslate"><span class="pre">DataBundle.splits</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.DataSplit"><code class="docutils literal notranslate"><span class="pre">DataSplit</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.DataSplit.inputs"><code class="docutils literal notranslate"><span class="pre">DataSplit.inputs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.DataSplit.metadata"><code class="docutils literal notranslate"><span class="pre">DataSplit.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.DataSplit.targets"><code class="docutils literal notranslate"><span class="pre">DataSplit.targets</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.Dataset"><code class="docutils literal notranslate"><span class="pre">Dataset</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.Dataset._load"><code class="docutils literal notranslate"><span class="pre">Dataset._load()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.Dataset.load"><code class="docutils literal notranslate"><span class="pre">Dataset.load()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.Dataset.name"><code class="docutils literal notranslate"><span class="pre">Dataset.name</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.FeatureSpec"><code class="docutils literal notranslate"><span class="pre">FeatureSpec</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.FeatureSpec.channels"><code class="docutils literal notranslate"><span class="pre">FeatureSpec.channels</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.FeatureSpec.description"><code class="docutils literal notranslate"><span class="pre">FeatureSpec.description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.FeatureSpec.extra"><code class="docutils literal notranslate"><span class="pre">FeatureSpec.extra</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.FeatureSpec.input_dim"><code class="docutils literal notranslate"><span class="pre">FeatureSpec.input_dim</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.LabelSpec"><code class="docutils literal notranslate"><span class="pre">LabelSpec</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.LabelSpec.description"><code class="docutils literal notranslate"><span class="pre">LabelSpec.description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.LabelSpec.extra"><code class="docutils literal notranslate"><span class="pre">LabelSpec.extra</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.LabelSpec.num_targets"><code class="docutils literal notranslate"><span class="pre">LabelSpec.num_targets</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.LabelSpec.task_type"><code class="docutils literal notranslate"><span class="pre">LabelSpec.task_type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.Transform"><code class="docutils literal notranslate"><span class="pre">Transform</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.Transform._abc_impl"><code class="docutils literal notranslate"><span class="pre">Transform._abc_impl</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.Transform._is_protocol"><code class="docutils literal notranslate"><span class="pre">Transform._is_protocol</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.datasets.html#module-pyhazards.datasets.registry">pyhazards.datasets.registry module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.registry.available_datasets"><code class="docutils literal notranslate"><span class="pre">available_datasets()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.registry.load_dataset"><code class="docutils literal notranslate"><span class="pre">load_dataset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.registry.register_dataset"><code class="docutils literal notranslate"><span class="pre">register_dataset()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.datasets.html#module-pyhazards.datasets.transforms">pyhazards.datasets.transforms package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.datasets.html#module-pyhazards.datasets.hazards">pyhazards.datasets.hazards package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.datasets.html#module-pyhazards.datasets">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.DataBundle"><code class="docutils literal notranslate"><span class="pre">DataBundle</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.DataBundle.feature_spec"><code class="docutils literal notranslate"><span class="pre">DataBundle.feature_spec</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.DataBundle.get_split"><code class="docutils literal notranslate"><span class="pre">DataBundle.get_split()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.DataBundle.label_spec"><code class="docutils literal notranslate"><span class="pre">DataBundle.label_spec</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.DataBundle.metadata"><code class="docutils literal notranslate"><span class="pre">DataBundle.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.DataBundle.splits"><code class="docutils literal notranslate"><span class="pre">DataBundle.splits</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.DataSplit"><code class="docutils literal notranslate"><span class="pre">DataSplit</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.DataSplit.inputs"><code class="docutils literal notranslate"><span class="pre">DataSplit.inputs</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.DataSplit.metadata"><code class="docutils literal notranslate"><span class="pre">DataSplit.metadata</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.DataSplit.targets"><code class="docutils literal notranslate"><span class="pre">DataSplit.targets</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.Dataset"><code class="docutils literal notranslate"><span class="pre">Dataset</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.Dataset._load"><code class="docutils literal notranslate"><span class="pre">Dataset._load()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.Dataset.load"><code class="docutils literal notranslate"><span class="pre">Dataset.load()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.Dataset.name"><code class="docutils literal notranslate"><span class="pre">Dataset.name</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.FeatureSpec"><code class="docutils literal notranslate"><span class="pre">FeatureSpec</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.FeatureSpec.channels"><code class="docutils literal notranslate"><span class="pre">FeatureSpec.channels</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.FeatureSpec.description"><code class="docutils literal notranslate"><span class="pre">FeatureSpec.description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.FeatureSpec.extra"><code class="docutils literal notranslate"><span class="pre">FeatureSpec.extra</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.FeatureSpec.input_dim"><code class="docutils literal notranslate"><span class="pre">FeatureSpec.input_dim</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.GraphTemporalDataset"><code class="docutils literal notranslate"><span class="pre">GraphTemporalDataset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.LabelSpec"><code class="docutils literal notranslate"><span class="pre">LabelSpec</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.LabelSpec.description"><code class="docutils literal notranslate"><span class="pre">LabelSpec.description</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.LabelSpec.extra"><code class="docutils literal notranslate"><span class="pre">LabelSpec.extra</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.LabelSpec.num_targets"><code class="docutils literal notranslate"><span class="pre">LabelSpec.num_targets</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.LabelSpec.task_type"><code class="docutils literal notranslate"><span class="pre">LabelSpec.task_type</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.available_datasets"><code class="docutils literal notranslate"><span class="pre">available_datasets()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.graph_collate"><code class="docutils literal notranslate"><span class="pre">graph_collate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.load_dataset"><code class="docutils literal notranslate"><span class="pre">load_dataset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.register_dataset"><code class="docutils literal notranslate"><span class="pre">register_dataset()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pyhazards.models.html">pyhazards.models package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.models.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.models.html#module-pyhazards.models.backbones">pyhazards.models.backbones module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.backbones.CNNPatchEncoder"><code class="docutils literal notranslate"><span class="pre">CNNPatchEncoder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.backbones.CNNPatchEncoder.forward"><code class="docutils literal notranslate"><span class="pre">CNNPatchEncoder.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.backbones.MLPBackbone"><code class="docutils literal notranslate"><span class="pre">MLPBackbone</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.backbones.MLPBackbone.forward"><code class="docutils literal notranslate"><span class="pre">MLPBackbone.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.backbones.TemporalEncoder"><code class="docutils literal notranslate"><span class="pre">TemporalEncoder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.backbones.TemporalEncoder.forward"><code class="docutils literal notranslate"><span class="pre">TemporalEncoder.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.models.html#module-pyhazards.models.heads">pyhazards.models.heads module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.heads.ClassificationHead"><code class="docutils literal notranslate"><span class="pre">ClassificationHead</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.heads.ClassificationHead.forward"><code class="docutils literal notranslate"><span class="pre">ClassificationHead.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.heads.RegressionHead"><code class="docutils literal notranslate"><span class="pre">RegressionHead</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.heads.RegressionHead.forward"><code class="docutils literal notranslate"><span class="pre">RegressionHead.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.heads.SegmentationHead"><code class="docutils literal notranslate"><span class="pre">SegmentationHead</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.heads.SegmentationHead.forward"><code class="docutils literal notranslate"><span class="pre">SegmentationHead.forward()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.models.html#module-pyhazards.models.builder">pyhazards.models.builder module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.builder.build_model"><code class="docutils literal notranslate"><span class="pre">build_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.builder.default_builder"><code class="docutils literal notranslate"><span class="pre">default_builder()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.models.html#module-pyhazards.models.registry">pyhazards.models.registry module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.registry.available_models"><code class="docutils literal notranslate"><span class="pre">available_models()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.registry.get_model_config"><code class="docutils literal notranslate"><span class="pre">get_model_config()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.registry.register_model"><code class="docutils literal notranslate"><span class="pre">register_model()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.models.html#module-pyhazards.models">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.CNNPatchEncoder"><code class="docutils literal notranslate"><span class="pre">CNNPatchEncoder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.CNNPatchEncoder.forward"><code class="docutils literal notranslate"><span class="pre">CNNPatchEncoder.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.ClassificationHead"><code class="docutils literal notranslate"><span class="pre">ClassificationHead</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.ClassificationHead.forward"><code class="docutils literal notranslate"><span class="pre">ClassificationHead.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.MLPBackbone"><code class="docutils literal notranslate"><span class="pre">MLPBackbone</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.MLPBackbone.forward"><code class="docutils literal notranslate"><span class="pre">MLPBackbone.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.RegressionHead"><code class="docutils literal notranslate"><span class="pre">RegressionHead</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.RegressionHead.forward"><code class="docutils literal notranslate"><span class="pre">RegressionHead.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.SegmentationHead"><code class="docutils literal notranslate"><span class="pre">SegmentationHead</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.SegmentationHead.forward"><code class="docutils literal notranslate"><span class="pre">SegmentationHead.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.TemporalEncoder"><code class="docutils literal notranslate"><span class="pre">TemporalEncoder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.TemporalEncoder.forward"><code class="docutils literal notranslate"><span class="pre">TemporalEncoder.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.TverskyLoss"><code class="docutils literal notranslate"><span class="pre">TverskyLoss</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.TverskyLoss.forward"><code class="docutils literal notranslate"><span class="pre">TverskyLoss.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.WildfireASPP"><code class="docutils literal notranslate"><span class="pre">WildfireASPP</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.WildfireCNNASPP"><code class="docutils literal notranslate"><span class="pre">WildfireCNNASPP</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.WildfireCNNASPP.forward"><code class="docutils literal notranslate"><span class="pre">WildfireCNNASPP.forward()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.WildfireMamba"><code class="docutils literal notranslate"><span class="pre">WildfireMamba</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.WildfireMamba._get_adjacency"><code class="docutils literal notranslate"><span class="pre">WildfireMamba._get_adjacency()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.WildfireMamba._temporal_delta"><code class="docutils literal notranslate"><span class="pre">WildfireMamba._temporal_delta()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.WildfireMamba.forward"><code class="docutils literal notranslate"><span class="pre">WildfireMamba.forward()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.WildfireMamba.set_adjacency"><code class="docutils literal notranslate"><span class="pre">WildfireMamba.set_adjacency()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.available_models"><code class="docutils literal notranslate"><span class="pre">available_models()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.build_model"><code class="docutils literal notranslate"><span class="pre">build_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.cnn_aspp_builder"><code class="docutils literal notranslate"><span class="pre">cnn_aspp_builder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.register_model"><code class="docutils literal notranslate"><span class="pre">register_model()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.wildfire_aspp_builder"><code class="docutils literal notranslate"><span class="pre">wildfire_aspp_builder()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.models.html#pyhazards.models.wildfire_mamba_builder"><code class="docutils literal notranslate"><span class="pre">wildfire_mamba_builder()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pyhazards.engine.html">pyhazards.engine package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.engine.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.engine.html#module-pyhazards.engine.trainer">pyhazards.engine.trainer module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.engine.html#pyhazards.engine.trainer.Trainer"><code class="docutils literal notranslate"><span class="pre">Trainer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.engine.html#pyhazards.engine.trainer.Trainer._make_loader"><code class="docutils literal notranslate"><span class="pre">Trainer._make_loader()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.engine.html#pyhazards.engine.trainer.Trainer._to_device"><code class="docutils literal notranslate"><span class="pre">Trainer._to_device()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.engine.html#pyhazards.engine.trainer.Trainer.evaluate"><code class="docutils literal notranslate"><span class="pre">Trainer.evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.engine.html#pyhazards.engine.trainer.Trainer.fit"><code class="docutils literal notranslate"><span class="pre">Trainer.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.engine.html#pyhazards.engine.trainer.Trainer.predict"><code class="docutils literal notranslate"><span class="pre">Trainer.predict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.engine.html#pyhazards.engine.trainer.Trainer.save_checkpoint"><code class="docutils literal notranslate"><span class="pre">Trainer.save_checkpoint()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.engine.html#module-pyhazards.engine.distributed">pyhazards.engine.distributed module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.engine.html#pyhazards.engine.distributed.DistributedConfig"><code class="docutils literal notranslate"><span class="pre">DistributedConfig</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.engine.html#pyhazards.engine.distributed.DistributedConfig.devices"><code class="docutils literal notranslate"><span class="pre">DistributedConfig.devices</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.engine.html#pyhazards.engine.distributed.DistributedConfig.strategy"><code class="docutils literal notranslate"><span class="pre">DistributedConfig.strategy</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.engine.html#pyhazards.engine.distributed.select_strategy"><code class="docutils literal notranslate"><span class="pre">select_strategy()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.engine.html#module-pyhazards.engine.inference">pyhazards.engine.inference module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.engine.html#pyhazards.engine.inference.SlidingWindowInference"><code class="docutils literal notranslate"><span class="pre">SlidingWindowInference</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.engine.html#module-pyhazards.engine">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.engine.html#pyhazards.engine.DistributedConfig"><code class="docutils literal notranslate"><span class="pre">DistributedConfig</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.engine.html#pyhazards.engine.DistributedConfig.devices"><code class="docutils literal notranslate"><span class="pre">DistributedConfig.devices</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.engine.html#pyhazards.engine.DistributedConfig.strategy"><code class="docutils literal notranslate"><span class="pre">DistributedConfig.strategy</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.engine.html#pyhazards.engine.SlidingWindowInference"><code class="docutils literal notranslate"><span class="pre">SlidingWindowInference</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.engine.html#pyhazards.engine.Trainer"><code class="docutils literal notranslate"><span class="pre">Trainer</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.engine.html#pyhazards.engine.Trainer._make_loader"><code class="docutils literal notranslate"><span class="pre">Trainer._make_loader()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.engine.html#pyhazards.engine.Trainer._to_device"><code class="docutils literal notranslate"><span class="pre">Trainer._to_device()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.engine.html#pyhazards.engine.Trainer.evaluate"><code class="docutils literal notranslate"><span class="pre">Trainer.evaluate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.engine.html#pyhazards.engine.Trainer.fit"><code class="docutils literal notranslate"><span class="pre">Trainer.fit()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.engine.html#pyhazards.engine.Trainer.predict"><code class="docutils literal notranslate"><span class="pre">Trainer.predict()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="pyhazards.engine.html#pyhazards.engine.Trainer.save_checkpoint"><code class="docutils literal notranslate"><span class="pre">Trainer.save_checkpoint()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.engine.html#pyhazards.engine.select_strategy"><code class="docutils literal notranslate"><span class="pre">select_strategy()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pyhazards.metrics.html">pyhazards.metrics package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.metrics.html#pyhazards.metrics.ClassificationMetrics"><code class="docutils literal notranslate"><span class="pre">ClassificationMetrics</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.metrics.html#pyhazards.metrics.ClassificationMetrics._abc_impl"><code class="docutils literal notranslate"><span class="pre">ClassificationMetrics._abc_impl</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.metrics.html#pyhazards.metrics.ClassificationMetrics.compute"><code class="docutils literal notranslate"><span class="pre">ClassificationMetrics.compute()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.metrics.html#pyhazards.metrics.ClassificationMetrics.reset"><code class="docutils literal notranslate"><span class="pre">ClassificationMetrics.reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.metrics.html#pyhazards.metrics.ClassificationMetrics.update"><code class="docutils literal notranslate"><span class="pre">ClassificationMetrics.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.metrics.html#pyhazards.metrics.MetricBase"><code class="docutils literal notranslate"><span class="pre">MetricBase</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.metrics.html#pyhazards.metrics.MetricBase._abc_impl"><code class="docutils literal notranslate"><span class="pre">MetricBase._abc_impl</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.metrics.html#pyhazards.metrics.MetricBase.compute"><code class="docutils literal notranslate"><span class="pre">MetricBase.compute()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.metrics.html#pyhazards.metrics.MetricBase.reset"><code class="docutils literal notranslate"><span class="pre">MetricBase.reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.metrics.html#pyhazards.metrics.MetricBase.update"><code class="docutils literal notranslate"><span class="pre">MetricBase.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.metrics.html#pyhazards.metrics.RegressionMetrics"><code class="docutils literal notranslate"><span class="pre">RegressionMetrics</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.metrics.html#pyhazards.metrics.RegressionMetrics._abc_impl"><code class="docutils literal notranslate"><span class="pre">RegressionMetrics._abc_impl</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.metrics.html#pyhazards.metrics.RegressionMetrics.compute"><code class="docutils literal notranslate"><span class="pre">RegressionMetrics.compute()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.metrics.html#pyhazards.metrics.RegressionMetrics.reset"><code class="docutils literal notranslate"><span class="pre">RegressionMetrics.reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.metrics.html#pyhazards.metrics.RegressionMetrics.update"><code class="docutils literal notranslate"><span class="pre">RegressionMetrics.update()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.metrics.html#pyhazards.metrics.SegmentationMetrics"><code class="docutils literal notranslate"><span class="pre">SegmentationMetrics</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.metrics.html#pyhazards.metrics.SegmentationMetrics._abc_impl"><code class="docutils literal notranslate"><span class="pre">SegmentationMetrics._abc_impl</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.metrics.html#pyhazards.metrics.SegmentationMetrics.compute"><code class="docutils literal notranslate"><span class="pre">SegmentationMetrics.compute()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.metrics.html#pyhazards.metrics.SegmentationMetrics.reset"><code class="docutils literal notranslate"><span class="pre">SegmentationMetrics.reset()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.metrics.html#pyhazards.metrics.SegmentationMetrics.update"><code class="docutils literal notranslate"><span class="pre">SegmentationMetrics.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pyhazards.utils.html">pyhazards.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.utils.html#module-pyhazards.utils.hardware">pyhazards.utils.hardware module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.utils.html#pyhazards.utils.hardware.auto_device"><code class="docutils literal notranslate"><span class="pre">auto_device()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.utils.html#pyhazards.utils.hardware.get_device"><code class="docutils literal notranslate"><span class="pre">get_device()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.utils.html#pyhazards.utils.hardware.num_devices"><code class="docutils literal notranslate"><span class="pre">num_devices()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.utils.html#pyhazards.utils.hardware.set_device"><code class="docutils literal notranslate"><span class="pre">set_device()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.utils.html#module-pyhazards.utils.common">pyhazards.utils.common module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.utils.html#pyhazards.utils.common.get_logger"><code class="docutils literal notranslate"><span class="pre">get_logger()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.utils.html#pyhazards.utils.common.seed_all"><code class="docutils literal notranslate"><span class="pre">seed_all()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pyhazards.utils.html#module-pyhazards.utils">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.utils.html#pyhazards.utils.auto_device"><code class="docutils literal notranslate"><span class="pre">auto_device()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.utils.html#pyhazards.utils.get_device"><code class="docutils literal notranslate"><span class="pre">get_device()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.utils.html#pyhazards.utils.get_logger"><code class="docutils literal notranslate"><span class="pre">get_logger()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.utils.html#pyhazards.utils.num_devices"><code class="docutils literal notranslate"><span class="pre">num_devices()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.utils.html#pyhazards.utils.seed_all"><code class="docutils literal notranslate"><span class="pre">seed_all()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyhazards.utils.html#pyhazards.utils.set_device"><code class="docutils literal notranslate"><span class="pre">set_device()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-pyhazards">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pyhazards" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pyhazards.CNNPatchEncoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyhazards.</span></span><span class="sig-name descname"><span class="pre">CNNPatchEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/models/backbones.html#CNNPatchEncoder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.CNNPatchEncoder" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Lightweight CNN encoder for raster patches.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.CNNPatchEncoder.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/models/backbones.html#CNNPatchEncoder.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.CNNPatchEncoder.forward" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyhazards.ClassificationHead">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyhazards.</span></span><span class="sig-name descname"><span class="pre">ClassificationHead</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/models/heads.html#ClassificationHead"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.ClassificationHead" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Simple classification head.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.ClassificationHead.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/models/heads.html#ClassificationHead.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.ClassificationHead.forward" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyhazards.ClassificationMetrics">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyhazards.</span></span><span class="sig-name descname"><span class="pre">ClassificationMetrics</span></span><a class="reference internal" href="../_modules/pyhazards/metrics.html#ClassificationMetrics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.ClassificationMetrics" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pyhazards.metrics.html#pyhazards.metrics.MetricBase" title="pyhazards.metrics.MetricBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetricBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyhazards.ClassificationMetrics._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc._abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pyhazards.ClassificationMetrics._abc_impl" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.ClassificationMetrics.compute">
+<span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/metrics.html#ClassificationMetrics.compute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.ClassificationMetrics.compute" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.ClassificationMetrics.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/metrics.html#ClassificationMetrics.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.ClassificationMetrics.reset" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.ClassificationMetrics.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/metrics.html#ClassificationMetrics.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.ClassificationMetrics.update" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyhazards.DataBundle">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyhazards.</span></span><span class="sig-name descname"><span class="pre">DataBundle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">splits</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feature_spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_spec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata=&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/datasets/base.html#DataBundle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.DataBundle" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Bundle of train/val/test splits plus metadata.
+Keeps feature/label specs to make model construction easy.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyhazards.DataBundle.feature_spec">
+<span class="sig-name descname"><span class="pre">feature_spec</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.FeatureSpec" title="pyhazards.datasets.base.FeatureSpec"><code class="xref py py-class docutils literal notranslate"><span class="pre">FeatureSpec</span></code></a></em><a class="headerlink" href="#pyhazards.DataBundle.feature_spec" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.DataBundle.get_split">
+<span class="sig-name descname"><span class="pre">get_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/datasets/base.html#DataBundle.get_split"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.DataBundle.get_split" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.DataSplit" title="pyhazards.datasets.base.DataSplit"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataSplit</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyhazards.DataBundle.label_spec">
+<span class="sig-name descname"><span class="pre">label_spec</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.LabelSpec" title="pyhazards.datasets.base.LabelSpec"><code class="xref py py-class docutils literal notranslate"><span class="pre">LabelSpec</span></code></a></em><a class="headerlink" href="#pyhazards.DataBundle.label_spec" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyhazards.DataBundle.metadata">
+<span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">,</span> <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code><span class="pre">]</span></em><a class="headerlink" href="#pyhazards.DataBundle.metadata" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyhazards.DataBundle.splits">
+<span class="sig-name descname"><span class="pre">splits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">,</span> <a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.DataSplit" title="pyhazards.datasets.base.DataSplit"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataSplit</span></code></a><span class="pre">]</span></em><a class="headerlink" href="#pyhazards.DataBundle.splits" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyhazards.DataSplit">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyhazards.</span></span><span class="sig-name descname"><span class="pre">DataSplit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metadata=&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/datasets/base.html#DataSplit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.DataSplit" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Container for a single split.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyhazards.DataSplit.inputs">
+<span class="sig-name descname"><span class="pre">inputs</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></em><a class="headerlink" href="#pyhazards.DataSplit.inputs" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyhazards.DataSplit.metadata">
+<span class="sig-name descname"><span class="pre">metadata</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">,</span> <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code><span class="pre">]</span></em><a class="headerlink" href="#pyhazards.DataSplit.metadata" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyhazards.DataSplit.targets">
+<span class="sig-name descname"><span class="pre">targets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></em><a class="headerlink" href="#pyhazards.DataSplit.targets" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyhazards.Dataset">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyhazards.</span></span><span class="sig-name descname"><span class="pre">Dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cache_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/datasets/base.html#Dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.Dataset" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for hazard datasets.
+Subclasses should load data and return a DataBundle with splits ready for training.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.Dataset._load">
+<span class="sig-name descname"><span class="pre">_load</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/datasets/base.html#Dataset._load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.Dataset._load" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.DataBundle" title="pyhazards.datasets.base.DataBundle"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataBundle</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.Dataset.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transforms</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/datasets/base.html#Dataset.load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.Dataset.load" title="Link to this definition">¶</a></dt>
+<dd><p>Return a DataBundle. Optionally return a specific split if provided.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.DataBundle" title="pyhazards.datasets.base.DataBundle"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataBundle</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyhazards.Dataset.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'base'</span></em><a class="headerlink" href="#pyhazards.Dataset.name" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyhazards.FeatureSpec">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyhazards.</span></span><span class="sig-name descname"><span class="pre">FeatureSpec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dim=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channels=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra=&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/datasets/base.html#FeatureSpec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.FeatureSpec" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Describes input features (shapes, dtypes, normalization).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyhazards.FeatureSpec.channels">
+<span class="sig-name descname"><span class="pre">channels</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code><span class="pre">]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyhazards.FeatureSpec.channels" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyhazards.FeatureSpec.description">
+<span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyhazards.FeatureSpec.description" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyhazards.FeatureSpec.extra">
+<span class="sig-name descname"><span class="pre">extra</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">,</span> <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code><span class="pre">]</span></em><a class="headerlink" href="#pyhazards.FeatureSpec.extra" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyhazards.FeatureSpec.input_dim">
+<span class="sig-name descname"><span class="pre">input_dim</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code><span class="pre">]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyhazards.FeatureSpec.input_dim" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyhazards.LabelSpec">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyhazards.</span></span><span class="sig-name descname"><span class="pre">LabelSpec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_targets=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_type='regression'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description=None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra=&lt;factory&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/datasets/base.html#LabelSpec"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.LabelSpec" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Describes labels/targets for downstream tasks.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyhazards.LabelSpec.description">
+<span class="sig-name descname"><span class="pre">description</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyhazards.LabelSpec.description" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyhazards.LabelSpec.extra">
+<span class="sig-name descname"><span class="pre">extra</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code><span class="pre">,</span> <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code><span class="pre">]</span></em><a class="headerlink" href="#pyhazards.LabelSpec.extra" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyhazards.LabelSpec.num_targets">
+<span class="sig-name descname"><span class="pre">num_targets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code><span class="pre">[</span><code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code><span class="pre">]</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#pyhazards.LabelSpec.num_targets" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyhazards.LabelSpec.task_type">
+<span class="sig-name descname"><span class="pre">task_type</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'regression'</span></em><a class="headerlink" href="#pyhazards.LabelSpec.task_type" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyhazards.MLPBackbone">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyhazards.</span></span><span class="sig-name descname"><span class="pre">MLPBackbone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">256</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/models/backbones.html#MLPBackbone"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.MLPBackbone" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Simple MLP for tabular features.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.MLPBackbone.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/models/backbones.html#MLPBackbone.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.MLPBackbone.forward" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyhazards.MetricBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyhazards.</span></span><span class="sig-name descname"><span class="pre">MetricBase</span></span><a class="reference internal" href="../_modules/pyhazards/metrics.html#MetricBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.MetricBase" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyhazards.MetricBase._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc._abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pyhazards.MetricBase._abc_impl" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.MetricBase.compute">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/metrics.html#MetricBase.compute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.MetricBase.compute" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.MetricBase.reset">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/metrics.html#MetricBase.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.MetricBase.reset" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.MetricBase.update">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/metrics.html#MetricBase.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.MetricBase.update" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyhazards.RegressionHead">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyhazards.</span></span><span class="sig-name descname"><span class="pre">RegressionHead</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/models/heads.html#RegressionHead"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.RegressionHead" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Regression head for scalar or multi-target outputs.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.RegressionHead.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/models/heads.html#RegressionHead.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.RegressionHead.forward" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyhazards.RegressionMetrics">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyhazards.</span></span><span class="sig-name descname"><span class="pre">RegressionMetrics</span></span><a class="reference internal" href="../_modules/pyhazards/metrics.html#RegressionMetrics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.RegressionMetrics" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pyhazards.metrics.html#pyhazards.metrics.MetricBase" title="pyhazards.metrics.MetricBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetricBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyhazards.RegressionMetrics._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc._abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pyhazards.RegressionMetrics._abc_impl" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.RegressionMetrics.compute">
+<span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/metrics.html#RegressionMetrics.compute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.RegressionMetrics.compute" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.RegressionMetrics.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/metrics.html#RegressionMetrics.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.RegressionMetrics.reset" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.RegressionMetrics.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/metrics.html#RegressionMetrics.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.RegressionMetrics.update" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyhazards.SegmentationHead">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyhazards.</span></span><span class="sig-name descname"><span class="pre">SegmentationHead</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_channels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_classes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/models/heads.html#SegmentationHead"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.SegmentationHead" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Segmentation head for raster masks.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.SegmentationHead.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/models/heads.html#SegmentationHead.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.SegmentationHead.forward" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyhazards.SegmentationMetrics">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyhazards.</span></span><span class="sig-name descname"><span class="pre">SegmentationMetrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_classes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/metrics.html#SegmentationMetrics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.SegmentationMetrics" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="pyhazards.metrics.html#pyhazards.metrics.MetricBase" title="pyhazards.metrics.MetricBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetricBase</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pyhazards.SegmentationMetrics._abc_impl">
+<span class="sig-name descname"><span class="pre">_abc_impl</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;_abc._abc_data</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#pyhazards.SegmentationMetrics._abc_impl" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.SegmentationMetrics.compute">
+<span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/metrics.html#SegmentationMetrics.compute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.SegmentationMetrics.compute" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.SegmentationMetrics.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/metrics.html#SegmentationMetrics.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.SegmentationMetrics.reset" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.SegmentationMetrics.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">preds</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/metrics.html#SegmentationMetrics.update"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.SegmentationMetrics.update" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyhazards.TemporalEncoder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyhazards.</span></span><span class="sig-name descname"><span class="pre">TemporalEncoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dim</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">128</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_layers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/models/backbones.html#TemporalEncoder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.TemporalEncoder" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>GRU-based encoder for time-series signals.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.TemporalEncoder.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/models/backbones.html#TemporalEncoder.forward"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.TemporalEncoder.forward" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pyhazards.Trainer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pyhazards.</span></span><span class="sig-name descname"><span class="pre">Trainer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metrics</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strategy</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mixed_precision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/engine/trainer.html#Trainer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.Trainer" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Lightweight training abstraction with a familiar API:
+fit -&gt; evaluate -&gt; predict.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.Trainer._make_loader">
+<span class="sig-name descname"><span class="pre">_make_loader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targets</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collate_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shuffle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/engine/trainer.html#Trainer._make_loader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.Trainer._make_loader" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Iterable</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.Trainer._to_device">
+<span class="sig-name descname"><span class="pre">_to_device</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">obj</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/engine/trainer.html#Trainer._to_device"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.Trainer._to_device" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.Trainer.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'test'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collate_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/engine/trainer.html#Trainer.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.Trainer.evaluate" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dict</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.Trainer.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'train'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val_split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_epochs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">optimizer</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">32</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collate_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/engine/trainer.html#Trainer.fit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.Trainer.fit" title="Link to this definition">¶</a></dt>
+<dd><p>Minimal fit loop that works for tensor-based splits.
+Extend/replace with custom DataLoaders for complex data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.Trainer.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'test'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">64</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">collate_fn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/engine/trainer.html#Trainer.predict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.Trainer.predict" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code>]</span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pyhazards.Trainer.save_checkpoint">
+<span class="sig-name descname"><span class="pre">save_checkpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/engine/trainer.html#Trainer.save_checkpoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.Trainer.save_checkpoint" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyhazards.available_datasets">
+<span class="sig-prename descclassname"><span class="pre">pyhazards.</span></span><span class="sig-name descname"><span class="pre">available_datasets</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/datasets/registry.html#available_datasets"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.available_datasets" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyhazards.available_models">
+<span class="sig-prename descclassname"><span class="pre">pyhazards.</span></span><span class="sig-name descname"><span class="pre">available_models</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/models/registry.html#available_models"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.available_models" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyhazards.build_model">
+<span class="sig-prename descclassname"><span class="pre">pyhazards.</span></span><span class="sig-name descname"><span class="pre">build_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/models/builder.html#build_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.build_model" title="Link to this definition">¶</a></dt>
+<dd><p>Build a model by name and task.
+This delegates to registry metadata to keep a consistent interface.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyhazards.load_dataset">
+<span class="sig-prename descclassname"><span class="pre">pyhazards.</span></span><span class="sig-name descname"><span class="pre">load_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/datasets/registry.html#load_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.load_dataset" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><a class="reference internal" href="pyhazards.datasets.html#pyhazards.datasets.base.Dataset" title="pyhazards.datasets.base.Dataset"><code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></a></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyhazards.register_dataset">
+<span class="sig-prename descclassname"><span class="pre">pyhazards.</span></span><span class="sig-name descname"><span class="pre">register_dataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">builder</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/datasets/registry.html#register_dataset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.register_dataset" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pyhazards.register_model">
+<span class="sig-prename descclassname"><span class="pre">pyhazards.</span></span><span class="sig-name descname"><span class="pre">register_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">builder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">defaults</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/pyhazards/models/registry.html#register_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pyhazards.register_model" title="Link to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></span></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          
+          
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, RAILab
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">pyhazards package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#module-pyhazards">Module contents</a><ul>
+<li><a class="reference internal" href="#pyhazards.CNNPatchEncoder"><code class="docutils literal notranslate"><span class="pre">CNNPatchEncoder</span></code></a><ul>
+<li><a class="reference internal" href="#pyhazards.CNNPatchEncoder.forward"><code class="docutils literal notranslate"><span class="pre">CNNPatchEncoder.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyhazards.ClassificationHead"><code class="docutils literal notranslate"><span class="pre">ClassificationHead</span></code></a><ul>
+<li><a class="reference internal" href="#pyhazards.ClassificationHead.forward"><code class="docutils literal notranslate"><span class="pre">ClassificationHead.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyhazards.ClassificationMetrics"><code class="docutils literal notranslate"><span class="pre">ClassificationMetrics</span></code></a><ul>
+<li><a class="reference internal" href="#pyhazards.ClassificationMetrics._abc_impl"><code class="docutils literal notranslate"><span class="pre">ClassificationMetrics._abc_impl</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.ClassificationMetrics.compute"><code class="docutils literal notranslate"><span class="pre">ClassificationMetrics.compute()</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.ClassificationMetrics.reset"><code class="docutils literal notranslate"><span class="pre">ClassificationMetrics.reset()</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.ClassificationMetrics.update"><code class="docutils literal notranslate"><span class="pre">ClassificationMetrics.update()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyhazards.DataBundle"><code class="docutils literal notranslate"><span class="pre">DataBundle</span></code></a><ul>
+<li><a class="reference internal" href="#pyhazards.DataBundle.feature_spec"><code class="docutils literal notranslate"><span class="pre">DataBundle.feature_spec</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.DataBundle.get_split"><code class="docutils literal notranslate"><span class="pre">DataBundle.get_split()</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.DataBundle.label_spec"><code class="docutils literal notranslate"><span class="pre">DataBundle.label_spec</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.DataBundle.metadata"><code class="docutils literal notranslate"><span class="pre">DataBundle.metadata</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.DataBundle.splits"><code class="docutils literal notranslate"><span class="pre">DataBundle.splits</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyhazards.DataSplit"><code class="docutils literal notranslate"><span class="pre">DataSplit</span></code></a><ul>
+<li><a class="reference internal" href="#pyhazards.DataSplit.inputs"><code class="docutils literal notranslate"><span class="pre">DataSplit.inputs</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.DataSplit.metadata"><code class="docutils literal notranslate"><span class="pre">DataSplit.metadata</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.DataSplit.targets"><code class="docutils literal notranslate"><span class="pre">DataSplit.targets</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyhazards.Dataset"><code class="docutils literal notranslate"><span class="pre">Dataset</span></code></a><ul>
+<li><a class="reference internal" href="#pyhazards.Dataset._load"><code class="docutils literal notranslate"><span class="pre">Dataset._load()</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.Dataset.load"><code class="docutils literal notranslate"><span class="pre">Dataset.load()</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.Dataset.name"><code class="docutils literal notranslate"><span class="pre">Dataset.name</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyhazards.FeatureSpec"><code class="docutils literal notranslate"><span class="pre">FeatureSpec</span></code></a><ul>
+<li><a class="reference internal" href="#pyhazards.FeatureSpec.channels"><code class="docutils literal notranslate"><span class="pre">FeatureSpec.channels</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.FeatureSpec.description"><code class="docutils literal notranslate"><span class="pre">FeatureSpec.description</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.FeatureSpec.extra"><code class="docutils literal notranslate"><span class="pre">FeatureSpec.extra</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.FeatureSpec.input_dim"><code class="docutils literal notranslate"><span class="pre">FeatureSpec.input_dim</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyhazards.LabelSpec"><code class="docutils literal notranslate"><span class="pre">LabelSpec</span></code></a><ul>
+<li><a class="reference internal" href="#pyhazards.LabelSpec.description"><code class="docutils literal notranslate"><span class="pre">LabelSpec.description</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.LabelSpec.extra"><code class="docutils literal notranslate"><span class="pre">LabelSpec.extra</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.LabelSpec.num_targets"><code class="docutils literal notranslate"><span class="pre">LabelSpec.num_targets</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.LabelSpec.task_type"><code class="docutils literal notranslate"><span class="pre">LabelSpec.task_type</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyhazards.MLPBackbone"><code class="docutils literal notranslate"><span class="pre">MLPBackbone</span></code></a><ul>
+<li><a class="reference internal" href="#pyhazards.MLPBackbone.forward"><code class="docutils literal notranslate"><span class="pre">MLPBackbone.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyhazards.MetricBase"><code class="docutils literal notranslate"><span class="pre">MetricBase</span></code></a><ul>
+<li><a class="reference internal" href="#pyhazards.MetricBase._abc_impl"><code class="docutils literal notranslate"><span class="pre">MetricBase._abc_impl</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.MetricBase.compute"><code class="docutils literal notranslate"><span class="pre">MetricBase.compute()</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.MetricBase.reset"><code class="docutils literal notranslate"><span class="pre">MetricBase.reset()</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.MetricBase.update"><code class="docutils literal notranslate"><span class="pre">MetricBase.update()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyhazards.RegressionHead"><code class="docutils literal notranslate"><span class="pre">RegressionHead</span></code></a><ul>
+<li><a class="reference internal" href="#pyhazards.RegressionHead.forward"><code class="docutils literal notranslate"><span class="pre">RegressionHead.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyhazards.RegressionMetrics"><code class="docutils literal notranslate"><span class="pre">RegressionMetrics</span></code></a><ul>
+<li><a class="reference internal" href="#pyhazards.RegressionMetrics._abc_impl"><code class="docutils literal notranslate"><span class="pre">RegressionMetrics._abc_impl</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.RegressionMetrics.compute"><code class="docutils literal notranslate"><span class="pre">RegressionMetrics.compute()</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.RegressionMetrics.reset"><code class="docutils literal notranslate"><span class="pre">RegressionMetrics.reset()</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.RegressionMetrics.update"><code class="docutils literal notranslate"><span class="pre">RegressionMetrics.update()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyhazards.SegmentationHead"><code class="docutils literal notranslate"><span class="pre">SegmentationHead</span></code></a><ul>
+<li><a class="reference internal" href="#pyhazards.SegmentationHead.forward"><code class="docutils literal notranslate"><span class="pre">SegmentationHead.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyhazards.SegmentationMetrics"><code class="docutils literal notranslate"><span class="pre">SegmentationMetrics</span></code></a><ul>
+<li><a class="reference internal" href="#pyhazards.SegmentationMetrics._abc_impl"><code class="docutils literal notranslate"><span class="pre">SegmentationMetrics._abc_impl</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.SegmentationMetrics.compute"><code class="docutils literal notranslate"><span class="pre">SegmentationMetrics.compute()</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.SegmentationMetrics.reset"><code class="docutils literal notranslate"><span class="pre">SegmentationMetrics.reset()</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.SegmentationMetrics.update"><code class="docutils literal notranslate"><span class="pre">SegmentationMetrics.update()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyhazards.TemporalEncoder"><code class="docutils literal notranslate"><span class="pre">TemporalEncoder</span></code></a><ul>
+<li><a class="reference internal" href="#pyhazards.TemporalEncoder.forward"><code class="docutils literal notranslate"><span class="pre">TemporalEncoder.forward()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyhazards.Trainer"><code class="docutils literal notranslate"><span class="pre">Trainer</span></code></a><ul>
+<li><a class="reference internal" href="#pyhazards.Trainer._make_loader"><code class="docutils literal notranslate"><span class="pre">Trainer._make_loader()</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.Trainer._to_device"><code class="docutils literal notranslate"><span class="pre">Trainer._to_device()</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.Trainer.evaluate"><code class="docutils literal notranslate"><span class="pre">Trainer.evaluate()</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.Trainer.fit"><code class="docutils literal notranslate"><span class="pre">Trainer.fit()</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.Trainer.predict"><code class="docutils literal notranslate"><span class="pre">Trainer.predict()</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.Trainer.save_checkpoint"><code class="docutils literal notranslate"><span class="pre">Trainer.save_checkpoint()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pyhazards.available_datasets"><code class="docutils literal notranslate"><span class="pre">available_datasets()</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.available_models"><code class="docutils literal notranslate"><span class="pre">available_models()</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.build_model"><code class="docutils literal notranslate"><span class="pre">build_model()</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.load_dataset"><code class="docutils literal notranslate"><span class="pre">load_dataset()</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.register_dataset"><code class="docutils literal notranslate"><span class="pre">register_dataset()</span></code></a></li>
+<li><a class="reference internal" href="#pyhazards.register_model"><code class="docutils literal notranslate"><span class="pre">register_model()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/documentation_options.js?v=e7fff540"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
+    </body>
+</html>

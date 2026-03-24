@@ -1,34 +1,17 @@
 ---
-name: 🚀 Feature Request
-about: Suggest a new feature or improvement
-title: "[Feature] "
+name: Feature request
+about: Suggest an idea for PyHazards
 labels: enhancement
-assignees: ''
-
 ---
 
-## 🚀 Describe the Feature
+**Is your feature request related to a problem? Please describe.**
+A clear description of the problem or user need.
 
-A clear and concise description of the feature you are requesting.
+**Describe the solution you'd like**
+What you want to add or change.
 
-## 📈 Motivation
+**Describe alternatives you've considered**
+Any alternative solutions or workarounds.
 
-Why do you need this feature? What problem does it solve or what use case does it support?
-
-## 🧩 Describe the Solution You'd Like
-
-Provide a clear description of what you want to happen, and how it might be implemented if you have ideas.
-
-## 🔄 Alternatives Considered
-
-Have you considered any alternative approaches or solutions? If so, describe them here.
-
-## 📎 Additional Context
-
-Add any other context, mockups, or references here.
-
----
-
-<!--
-Thanks for the suggestion! We’ll review it and follow up soon.
--->
+**Additional context**
+Any extra details, references, or examples.

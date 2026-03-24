@@ -4,10 +4,10 @@ import sys
 
 sys.path.insert(0, os.path.abspath('../../'))
 
-project = 'PyGIP'
+project = 'PyHazards'
 copyright = '2025, RAILab'
 author = 'RAILab'
-release = '1.0.0'
+release = '1.0.5'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -16,6 +16,7 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.napoleon',
               'sphinx.ext.viewcode',
               'sphinx.ext.autosummary',
+              'sphinx_design',
               'sphinx_autodoc_typehints'
               ]
 
@@ -46,9 +47,16 @@ napoleon_numpy_docstring = True
 
 html_theme = 'furo'
 html_static_path = ['_static']
-html_baseurl = "https://labrai.github.io/PyGIP/"
+html_baseurl = "https://labrai.github.io/PyHazards/"
+html_logo = "_static/logo.png"
+html_favicon = "_static/logo.png"
+html_title = "PyHazards 1.0.5 documentation"
 
 html_theme_options = {
     "navigation_with_keys": True,
     "sidebar_hide_name": False,
 }
+
+html_css_files = [
+    'custom.css',
+]
